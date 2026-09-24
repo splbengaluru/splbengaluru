@@ -1,5 +1,4 @@
 /* SPL.BLR theme - Brand Guide v2 (24 Sep 2026). Flat colour only, no gradients. */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Shrikhand&family=Noto+Sans+Kannada:wght@900&family=Inter:wght@400;500;600&display=swap");
 :root{
   --league-blue:#2E4BFF; --shadow-blue:#16278F; --volt:#D9FF3D; --orange:#FF5A1F;
   --pink:#F23E7B; --ink:#0A0D11; --offwhite:#F8F6F1;
