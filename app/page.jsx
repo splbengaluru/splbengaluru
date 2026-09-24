@@ -25,7 +25,7 @@ export default function HomePage() {
     <p className="hero-sub">Serious opportunity.<br />Unserious hosts.</p>
     <p className="lede">Startup League Bengaluru (SPL) is a fast, high-energy, day-long pitching event. Founders get a real stage. VCs get curated deal flow. The audience gets to discover, vote and play - not just watch.</p>
     <div className="cta-row">
-      <a className="btn btn-accent" href="/season-1#apply">Apply free</a>
+      <a className="btn btn-accent" href="/apply">Apply free</a>
       <a className="btn btn-ghost" href="/season-1">See the event</a>
     </div>
     <div className="stats">
@@ -134,7 +134,7 @@ export default function HomePage() {
     <span className="eyebrow">Get involved</span>
     <h2>Help two dumb guys<br />host their first event.</h2>
     <p className="lede" style={{"margin": "0 auto"}}>Founder, investor, sponsor, creator or volunteer - there's a spot for you.</p>
-    <div className="cta-row"><a className="btn btn-accent" href="/season-1#apply">Apply to pitch</a><a className="btn btn-ghost" href="mailto:">Email us <span className="tba">address TBA</span></a></div>
+    <div className="cta-row"><a className="btn btn-accent" href="/apply">Apply to pitch</a><a className="btn btn-ghost" href="mailto:">Email us <span className="tba">address TBA</span></a></div>
   </div>
 <img className="sky-band" src="/assets/skyline-1200.webp" alt="" aria-hidden="true" loading="lazy" /></section>
 </main>

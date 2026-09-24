@@ -24,7 +24,7 @@ export default function SeasonOnePage() {
     <p className="hero-sub">Come watch 16 founders sweat.</p>
     <p className="lede">Up to 500 apply. 16 pitch live to a room of VCs and a 200-strong audience that gets to vote. Five VC judges pick the top 3.</p>
     <div className="cta-row">
-      <a className="btn btn-accent" href="#apply">Apply free</a>
+      <a className="btn btn-accent" href="/apply">Apply free</a>
       <a className="btn btn-ghost" href="#tickets">Get tix</a>
     </div>
     <div className="stats">
@@ -114,17 +114,17 @@ export default function SeasonOnePage() {
   <div className="wrap">
     <span className="eyebrow">Tickets</span>
     <h2>Apply first. Then grab your seat.</h2>
-    <p className="lede">You can't just buy a ticket. Apply (it's free) and your application unlocks the option to buy one. Referral code: ₹100 off.</p>
+    <p className="lede">Founders apply free. Everyone else can register straight away for a General ticket. Referral code: ₹100 off.</p>
     <div className="tickets" id="apply">
       <div className="ticket rv"><span className="tag">Step 1 · Everyone</span><div className="price">FREE</div><span className="fine">Round 1 application</span><div className="perf"></div>
-        <ul><li>Idea + video link</li><li>Pitch deck optional</li><li>Unlocks ticket purchase</li><li>Shot at the live stage</li></ul>
-        <a className="btn btn-ghost" href="#">Apply now <span className="tba">form link TBA</span></a></div>
+        <ul><li>Idea + video link</li><li>Pitch deck optional</li><li>Unlocks the ₹799 ticket if not selected</li><li>Shot at the live stage</li></ul>
+        <a className="btn btn-ghost" href="/apply">Apply now</a></div>
       <div className="ticket feat rv"><span className="tag">Applied, not selected</span><div className="price"><small>₹</small>799</div><span className="fine">₹200 off base · referral on top <span className="tba">TBC</span></span><div className="perf"></div>
         <ul><li>For founders who applied to pitch and weren't selected</li><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Networking with founders and VCs</li></ul>
-        <a className="btn" href="#">Unlock after applying</a></div>
+        <a className="btn" href="/register">Register</a></div>
       <div className="ticket rv"><span className="tag">General · base ticket</span><div className="price"><small>₹</small>999</div><span className="fine">₹899 with a referral code</span><div className="perf"></div>
         <ul><li>Base price for attendees</li><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Play the quiz for a pitch slot</li></ul>
-        <a className="btn btn-ghost" href="#">Unlock after applying</a></div>
+        <a className="btn btn-ghost" href="/register">Register</a></div>
     </div>
     <p className="note">Selected startups: ₹4,999 showcase pass to pitch on stage. Tickets are non-refundable. GST <span className="tba">inclusive/exclusive TBC</span> · VC track and VIP <span className="tba">TBA</span> · Sales open <span className="tba">date TBA</span></p>
   </div>
@@ -150,7 +150,7 @@ export default function SeasonOnePage() {
     <h2>Questions.</h2>
     <div className="faq">
       <details><summary>Is applying really free?</summary><p>Yes. Round 1 is free: your idea and a video link. A pitch deck is optional.</p></details>
-      <details><summary>Does applying get me a ticket?</summary><p>No - it unlocks the option to buy one. General tickets are ₹999 (₹899 with a referral code). Founders who applied to pitch and weren't selected get ₹200 off, so ₹799.</p></details>
+      <details><summary>Do I need to apply to get a ticket?</summary><p>No. Anyone can register for a General ticket at ₹999 (₹899 with a referral code). Founders who applied to pitch and weren't selected get ₹200 off, so ₹799.</p></details>
       <details><summary>What does it cost to pitch?</summary><p>If you're one of the 15 selected startups, the showcase pass to pitch on stage is ₹4,999. Payment timing and withdrawal terms <span className="tba">TBA</span></p></details>
       <details><summary>How long is a pitch?</summary><p>5 minutes, followed by Q&amp;A.</p></details>
       <details><summary>Who judges?</summary><p>5 judges, all top-level VCs from the room. They pick the top 3.</p></details>
@@ -166,7 +166,7 @@ export default function SeasonOnePage() {
   <div className="wrap">
     <span className="eyebrow">24 Oct 2026 · Bengaluru</span>
     <h2>Pitch or<br />go home.</h2>
-    <div className="cta-row"><a className="btn btn-accent" href="#apply">Apply free →</a><a className="btn btn-ghost" href="#tickets">See tickets</a></div>
+    <div className="cta-row"><a className="btn btn-accent" href="/apply">Apply free →</a><a className="btn btn-ghost" href="#tickets">See tickets</a></div>
   </div>
 <img className="sky-band" src="/assets/skyline-1200.webp" alt="" aria-hidden="true" loading="lazy" /></section>
 </main>

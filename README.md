@@ -35,13 +35,34 @@ public/assets/fav.js    animated favicon (S -> P -> L -> trophy; Safari shows th
 
 | Name | Used by |
 | --- | --- |
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | leaderboard (Upstash Redis, set by the Vercel storage integration) |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | leaderboard + form rate limit (Upstash Redis, set by the Vercel storage integration) |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | form submissions (not set yet) |
 
 `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` also work as fallbacks.
 
-## Next up
+## Forms
 
-Registration and interest forms, in the same SPL.BLR theme, with people data in Supabase (Upstash stays for the leaderboard only). Interest forms are standalone shareable pages, e.g. `/interest/vc` and `/interest/sponsor`.
+| Page | Form | Supabase table |
+| --- | --- | --- |
+| `/register` | Audience registration (General ₹999 / applied-not-selected ₹799). No payment yet. | `audience_registrations` |
+| `/apply` | Founder application | `founder_applications` |
+| `/interest/vc` | VC interest (standalone, shareable) | `vc_interest` |
+| `/interest/sponsor` | Sponsor & booth interest (standalone, shareable) | `sponsor_interest` |
+
+- Fields and validation: `lib/forms.js` (one place, used by client and server).
+- UI: `components/BrandForm.jsx`, page shell `components/FormPage.jsx`, styles `styles/forms.css`.
+- API: `POST /api/forms/[type]`, with a honeypot and an Upstash rate limit (10 per IP per 10 min).
+- Data layer: `lib/store.js` (Supabase REST, server-side service role key). Until it's connected, forms return "opens very soon" and nothing is stored.
+- Add `?src=whatsapp` (or any tag) to a form link to record where signups came from.
+
+### Connect Supabase
+
+1. Create a project at supabase.com (region: Mumbai / ap-south-1).
+2. SQL Editor > New query > paste `supabase/schema.sql` > Run.
+3. Project Settings > API: copy the Project URL and the `service_role` key.
+4. Vercel > spl-bengaluru > Settings > Environment Variables: add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Production + Preview), then redeploy.
+
+The service role key is server-only. Never prefix it with `NEXT_PUBLIC_` or commit it.
 
 ## Content rule
 

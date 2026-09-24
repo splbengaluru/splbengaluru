@@ -2,6 +2,7 @@ import Script from "next/script";
 import "@/styles/theme.css";
 import "@/styles/site.css";
 import "@/styles/brand.css";
+import "@/styles/forms.css";
 
 const FONTS =
   "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Shrikhand&family=Noto+Sans+Kannada:wght@900&family=Inter:wght@400;500;600&display=swap";
