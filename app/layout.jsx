@@ -5,7 +5,7 @@ import "@/styles/brand.css";
 import "@/styles/forms.css";
 
 const FONTS =
-  "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Shrikhand&family=Noto+Sans+Kannada:wght@900&family=Inter:wght@400;500;600&display=swap";
+  "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Shrikhand&family=Noto+Sans+Kannada:wght@900&family=Inter:wght@400;500;600&family=Caveat:wght@700&display=swap";
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://spl-bengaluru.vercel.app"),

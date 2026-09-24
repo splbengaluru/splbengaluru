@@ -21,7 +21,7 @@ export default function HomePage() {
     <span className="eyebrow">Bengaluru, India - 24 Oct 2026 - Season 1</span>
     <div className="title-wrap"><h1 className="hero-title"><span>Startup League</span></h1>
     <div className="kn-sticker" lang="kn">ಬೆಂಗಳೂರು</div></div>
-    <button className="script tg" type="button" aria-label="Touch grass"><span className="tg-lawn tg-back" aria-hidden="true"></span><span className="tg-face"><span className="tg-label">touch grass</span></span><span className="tg-lawn tg-front" aria-hidden="true"></span></button>
+    <button className="script tg" type="button" aria-label="Touch grass"><span className="tg-lawn tg-back" aria-hidden="true"></span><span className="tg-face"><span className="tg-label">touch grass</span></span><span className="tg-lawn tg-front" aria-hidden="true"></span><span className="tg-doodle" aria-hidden="true"><svg viewBox="0 0 190 140" fill="none"><text x="112" y="16" transform="rotate(-9 130 12)">click</text><path className="tg-arrow" d="M178 30 C150 20 116 22 94 38 C80 48 84 68 102 66 C120 64 120 42 100 40 C74 38 52 56 42 78 C34 96 32 114 33 130" /><path className="tg-head" d="M20 114 L33 131 L48 117" /></svg></span></button>
     <p className="hero-sub">Serious opportunity.<br />Unserious hosts.</p>
     <p className="lede">Startup League Bengaluru (SPL) is a fast, high-energy, day-long pitching event. Founders get a real stage. VCs get curated deal flow. The audience gets to discover, vote and play - not just watch.</p>
     <div className="cta-row">
