@@ -37,7 +37,7 @@ export async function POST(req) {
       return json({ error: "Name: 2-18 letters, numbers, spaces, _ . -" }, 400);
     let n = parseInt(b.n, 10);
     if (!(n >= 0)) n = 0;
-    n = Math.min(n, 25);
+    n = Math.min(n, 500); // batch size per request, not a score limit
     const ip = String(req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "x";
     const minute = Math.floor(Date.now() / 60000);
     const day = new Date().toISOString().slice(0, 10);
@@ -57,15 +57,13 @@ export async function POST(req) {
     } else if (!prev) {
       await redis([["HSET", "grass:visitor", id, name]]);
     }
+    // No score cap. Only a bot guard: more than 3000 touches a minute from one IP
+    // (50 a second) is not a human. Limited touches are not lost - the client retries.
     let limited = false;
     if (n > 0) {
-      const [rl, , cap] = await redis([
-        ["INCRBY", "grass:rl:" + ip + ":" + minute, String(n)],
-        ["EXPIRE", "grass:rl:" + ip + ":" + minute, "70"],
-        ["INCRBY", "grass:cap:" + id + ":" + day, String(n)],
-        ["EXPIRE", "grass:cap:" + id + ":" + day, "90000"],
-      ]);
-      if (rl > 150 || cap > 1500) limited = true;
+      const rlKey = "grass:rl:" + ip + ":" + minute;
+      const [rl] = await redis([["INCRBY", rlKey, String(n)], ["EXPIRE", rlKey, "70"]]);
+      if (rl > 3000) limited = true;
       else await redis([["ZINCRBY", BOARD, String(n), name]]);
     }
     const [me] = await redis([["ZSCORE", BOARD, name]]);

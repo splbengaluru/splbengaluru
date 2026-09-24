@@ -51,11 +51,11 @@
     top.forEach(function(r){var li=document.createElement('li');if(name&&r.name===name)li.className='me';var a=document.createElement('span');a.className='n';a.textContent=r.name;var b=document.createElement('span');b.className='s';b.textContent=r.score;li.appendChild(a);li.appendChild(b);list.appendChild(li)})}
   function msg(t){meP.textContent=t}
   function load(){fetch('/api/grass').then(function(r){return r.json()}).then(function(d){render(d.top)}).catch(function(){msg('Leaderboard is napping. Try again soon.')})}
-  function send(){if(busy||!name)return;busy=true;var n=Math.min(pending,25);
+  function send(){if(busy||!name)return;busy=true;var n=Math.min(pending,500);
     fetch('/api/grass',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,name:name,n:n})}).then(function(r){return r.json().then(function(d){return{s:r.status,d:d}})}).then(function(x){
       busy=false;if(x.s===409||x.s===400){msg(x.d.error);name='';localStorage.removeItem('spl_gname');openP();return}
-      pending=Math.max(0,pending-n);if(x.d.limited){pending=0;msg('Slow down, grass needs a break.')}else if(x.d.name)msg('You: '+x.d.me+' touches');
-      localStorage.setItem('spl_gpend',pending);if(x.d.top)render(x.d.top);if(pending>0)setTimeout(send,400)}).catch(function(){busy=false})}
+      pending=Math.max(0,pending-n);if(x.d.limited){pending+=n;msg('Easy, tiger. Saving your touches in a sec.')}else if(x.d.name)msg('You: '+x.d.me+' touches');
+      localStorage.setItem('spl_gpend',pending);if(x.d.top)render(x.d.top);if(pending>0)setTimeout(send,x.d.limited?5000:400)}).catch(function(){busy=false})}
   function openP(){panel.hidden=false;btn.setAttribute('aria-expanded','true');load()}
   function closeP(){panel.hidden=true;btn.setAttribute('aria-expanded','false')}
   btn.addEventListener('click',function(){panel.hidden?openP():closeP()});

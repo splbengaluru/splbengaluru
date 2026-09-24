@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         {/* Page behaviour (reveal, countdown, touch grass, leaderboard) and the animated favicon */}
-        <Script src="/assets/site.js" strategy="afterInteractive" />
+        <Script src="/assets/site.js?v=2" strategy="afterInteractive" />
         <Script src="/assets/fav.js" strategy="afterInteractive" />
       </body>
     </html>
