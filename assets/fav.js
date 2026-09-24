@@ -1,0 +1,1 @@
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var f=['s','p','l','t'].map(function(n){var i=new Image();i.src='/assets/fav/'+n+'.png';return i.src}),d=[650,650,650,1500],k=0,l=document.querySelector('link[rel="icon"]');if(!l)return;function tick(){if(!document.hidden){l.href=f[k];}var w=d[k];k=(k+1)%4;setTimeout(tick,w)}tick()})();

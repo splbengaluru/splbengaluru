@@ -329,3 +329,7 @@ footer .brand .wm .lockup{font-size:40px}
 footer .brand .wm .trophy{height:46px}
 @media(max-width:860px){.brand .wm .trophy{height:28px}}
 @media(max-width:480px){.brand .wm{gap:6px}.brand .wm .lockup{font-size:24px}.brand .wm .trophy{height:22px;margin:0}.brand .city{font-size:9px;letter-spacing:.06em}.nav-right{gap:7px}.nav .btn-sm{padding:8px 9px;font-size:11px;white-space:nowrap}.lb-btn{padding:7px 8px;font-size:10px}}
+/* trophy accents */
+.tro-i{display:inline-block;height:1.05em;width:auto;vertical-align:-.14em;margin-right:.45em;filter:drop-shadow(2px 2px 0 rgba(10,13,17,.55))}
+.lb-btn .tro-i{height:1.3em;vertical-align:-.32em;margin-right:.4em;filter:none}
+.lb-btn:has(.tro-i):before{display:none}
