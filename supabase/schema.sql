@@ -237,3 +237,22 @@ create table if not exists public.member_avatars (
 );
 alter table public.member_avatars enable row level security;
 revoke all on public.member_avatars from anon, authenticated;
+
+-- Transactional email outbox. This records future notifications; it cannot send.
+-- Deploy only after confirming the email copy, sender, and delivery path.
+create table if not exists public.email_outbox (
+  id uuid primary key default gen_random_uuid(),
+  event_key text unique not null,
+  kind text not null check (kind in ('registration','test_payment','live_payment')),
+  recipient_email text not null,
+  registration_id uuid not null references public.audience_registrations(id),
+  razorpay_order_id text references public.payment_orders(razorpay_order_id),
+  status text not null default 'pending' check (status in ('pending','sending','sent','failed')),
+  provider_message_id text,
+  created_at timestamptz not null default now(),
+  sent_at timestamptz,
+  last_error text
+);
+create index if not exists email_outbox_pending_idx on public.email_outbox(created_at) where status='pending';
+alter table public.email_outbox enable row level security;
+revoke all on public.email_outbox from anon, authenticated;
