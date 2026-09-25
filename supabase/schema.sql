@@ -106,3 +106,61 @@ grant execute on function public.analytics_snapshot() to service_role;
 -- Remove API schema/table grants if this project has custom public grants.
 revoke all on public.admin_users, public.audience_registrations, public.founder_applications,
   public.vc_interest, public.sponsor_interest, public.visitor_sessions, public.page_views from anon, authenticated;
+
+-- Payments migration, safe to run again after initial schema.
+create sequence if not exists public.spl_paid_ticket_seq;
+create sequence if not exists public.spl_test_ticket_seq;
+alter table public.audience_registrations add column if not exists paid_ticket_number bigint;
+alter table public.audience_registrations add column if not exists test_ticket_number bigint;
+create unique index if not exists audience_paid_ticket_unique on public.audience_registrations(paid_ticket_number);
+create unique index if not exists audience_test_ticket_unique on public.audience_registrations(test_ticket_number);
+create table if not exists public.payment_orders (
+  id uuid primary key default gen_random_uuid(),
+  registration_id uuid not null references public.audience_registrations(id),
+  razorpay_order_id text unique not null,
+  razorpay_payment_id text unique,
+  amount_paise integer not null check (amount_paise > 0),
+  currency text not null default 'INR',
+  mode text not null check(mode in ('test','live')),
+  status text not null default 'created' check(status in ('created','paid','failed','refunded')),
+  created_at timestamptz not null default now(),
+  paid_at timestamptz
+);
+create index if not exists payment_orders_registration_idx on public.payment_orders(registration_id, created_at desc);
+alter table public.payment_orders enable row level security;
+revoke all on public.payment_orders from anon, authenticated;
+
+-- Atomic and idempotent issuance: verified captured Razorpay payment only.
+create or replace function public.confirm_captured_payment(p_order text, p_payment text, p_amount integer, p_mode text)
+returns bigint language plpgsql security invoker set search_path=public as $$
+declare o public.payment_orders%rowtype; n bigint;
+begin
+  select * into o from public.payment_orders where razorpay_order_id=p_order for update;
+  if not found or o.amount_paise<>p_amount or o.currency<>'INR' or o.mode<>p_mode then
+    raise exception 'payment order mismatch';
+  end if;
+  if o.status='paid' then
+    if o.razorpay_payment_id<>p_payment then raise exception 'different payment on paid order'; end if;
+    if o.mode='test' then select test_ticket_number into n from public.audience_registrations where id=o.registration_id;
+    else select paid_ticket_number into n from public.audience_registrations where id=o.registration_id; end if;
+    return n;
+  end if;
+  if o.status<>'created' then raise exception 'invalid payment order state'; end if;
+  update public.payment_orders set status='paid', razorpay_payment_id=p_payment, paid_at=now() where id=o.id;
+  if o.mode='test' then
+    select test_ticket_number into n from public.audience_registrations where id=o.registration_id for update;
+    if n is null then
+      n:=nextval('public.spl_test_ticket_seq');
+      update public.audience_registrations set test_ticket_number=n where id=o.registration_id;
+    end if;
+  else
+    select paid_ticket_number into n from public.audience_registrations where id=o.registration_id for update;
+    if n is null then
+      n:=nextval('public.spl_paid_ticket_seq');
+      update public.audience_registrations set paid_ticket_number=n, payment_status='paid' where id=o.registration_id;
+    end if;
+  end if;
+  return n;
+end $$;
+revoke all on function public.confirm_captured_payment(text,text,integer,text) from public, anon, authenticated;
+grant execute on function public.confirm_captured_payment(text,text,integer,text) to service_role;
