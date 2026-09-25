@@ -11,8 +11,9 @@ export async function GET(req) {
   const dest = /^\/(?!\/)[a-z0-9\/_-]{0,110}(?:#[a-z0-9_-]{1,50})?$/i.test(requested) ? requested : "/";
   for (const name of ["spl_oauth_verifier", "spl_oauth_next"])
     jar.set(name, "", { path: "/api/auth/callback", maxAge: 0 });
+  const failure = new URL(dest, url.origin); failure.searchParams.set("auth", "failed");
   if (!verifier || !/^[A-Za-z0-9_-]{10,256}$/.test(url.searchParams.get("code") || ""))
-    return Response.redirect(new URL(dest + "?auth=failed", url.origin));
+    return Response.redirect(failure);
   try {
     const result = await auth("token?grant_type=pkce", { auth_code: url.searchParams.get("code"), code_verifier: verifier });
     if (!result.ok) throw new Error("exchange failed");
@@ -26,5 +27,5 @@ export async function GET(req) {
     await savePublicSession(session);
     if (dest === "/admin") await setAdminSession(session);
     return Response.redirect(new URL(dest, url.origin));
-  } catch { return Response.redirect(new URL(dest + "?auth=failed", url.origin)); }
+  } catch { return Response.redirect(failure); }
 }
