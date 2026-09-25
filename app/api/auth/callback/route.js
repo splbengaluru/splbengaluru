@@ -20,7 +20,7 @@ export async function GET(req) {
     const verify = await auth("user", null, session.access_token);
     if (!verify.ok) throw new Error("invalid user");
     const user = await verify.json();
-    if (!user.id || !user.email || !user.email_confirmed_at) throw new Error("unconfirmed");
+    if (!user.id || !user.email || !user.email_confirmed_at || !(user.app_metadata?.providers || []).includes("google")) throw new Error("unconfirmed");
     if (dest === "/admin" && !(await isAdmin(user.id)))
       return Response.redirect(new URL("/admin?auth=denied", url.origin));
     await savePublicSession(session);
