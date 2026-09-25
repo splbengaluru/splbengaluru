@@ -189,8 +189,10 @@ begin
 end $$;
 revoke all on function public.record_visit(uuid,uuid,text,boolean,uuid) from public, anon, authenticated;
 grant execute on function public.record_visit(uuid,uuid,text,boolean,uuid) to service_role;
+-- This version reads auth.users to show signed-in visitors. The owner-created
+-- function runs with its definer rights; EXECUTE remains service_role-only.
 create or replace function public.analytics_snapshot()
-returns jsonb language sql security invoker set search_path = public as $$
+returns jsonb language sql security definer set search_path = public as $$
   select jsonb_build_object(
     'active', (select count(*) from public.visitor_sessions where last_seen > now() - interval '2 minutes'),
     'identified_online', (select coalesce(jsonb_agg(jsonb_build_object('email', email, 'path', path, 'last_seen', last_seen) order by last_seen desc), '[]'::jsonb)
