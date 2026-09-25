@@ -28,8 +28,8 @@ export async function POST(req, { params }) {
   if (errors) return json({ error: "Fix the highlighted fields", errors }, 400);
   if (!storeConfigured()) return json({ error: "Forms open very soon. The database isn't connected yet." }, 503);
   try {
-    await insertRow(form.table, { ...data, source: String(body.source || "").slice(0, 60) || null });
-    return json({ ok: true });
+    const row = await insertRow(form.table, { ...data, source: String(body.source || "").slice(0, 60) || null });
+    return json({ ok: true, ...(type === "audience" ? { registrationNumber: row.registration_number } : {}) });
   } catch (e) {
     if (e.code === "duplicate") return json({ error: "Looks like you're already in with this email." }, 409);
     return json({ error: "Something broke on our side. Try again in a minute." }, 500);

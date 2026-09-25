@@ -1,8 +1,10 @@
 import Script from "next/script";
+import VisitTracker from "@/components/VisitTracker";
 import "@/styles/theme.css";
 import "@/styles/site.css";
 import "@/styles/brand.css";
 import "@/styles/forms.css";
+import "@/styles/admin.css";
 
 const FONTS =
   "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Shrikhand&family=Noto+Sans+Kannada:wght@900&family=Inter:wght@400;500;600&family=Caveat:wght@700&display=swap";
@@ -33,6 +35,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        <VisitTracker />
         {/* Page behaviour (reveal, countdown, touch grass, leaderboard) and the animated favicon */}
         <Script src="/assets/site.js?v=2" strategy="afterInteractive" />
         <Script src="/assets/fav.js" strategy="afterInteractive" />

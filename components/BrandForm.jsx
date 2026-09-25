@@ -65,7 +65,7 @@ export default function BrandForm({ type }) {
     try {
       const r = await fetch("/api/forms/" + type, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const d = await r.json().catch(() => ({}));
-      if (r.ok && d.ok) return setState({ status: "done", errors: {}, message: form.success });
+      if (r.ok && d.ok) return setState({ status: "done", errors: {}, message: form.success, registrationNumber: d.registrationNumber });
       setState({ status: "error", errors: d.errors || {}, message: d.error || "Something broke. Try again." });
     } catch {
       setState({ status: "error", errors: {}, message: "No connection. Try again." });
@@ -77,7 +77,9 @@ export default function BrandForm({ type }) {
       <div className="bf-done" role="status">
         <span className="bf-stamp">Done</span>
         <h3>You're in.</h3>
+        {state.registrationNumber && <p className="bf-number">Registration #{state.registrationNumber}{Number(state.registrationNumber) <= 200 ? " of 200" : ""}</p>}
         <p>{state.message}</p>
+        {state.registrationNumber && <p className="bf-note">This is a registration number, not a paid ticket. Payment details will follow.</p>}
       </div>
     );
 
