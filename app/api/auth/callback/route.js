@@ -7,7 +7,8 @@ export async function GET(req) {
   if (process.env.GOOGLE_OAUTH_ENABLED !== "true") return Response.redirect(new URL("/admin?auth=unavailable", url.origin));
   const jar = await cookies();
   const verifier = jar.get("spl_oauth_verifier")?.value;
-  const dest = jar.get("spl_oauth_next")?.value === "/admin" ? "/admin" : "/";
+  const requested = jar.get("spl_oauth_next")?.value || "/";
+  const dest = /^\/(?!\/)[a-z0-9\/_-]{0,110}(?:#[a-z0-9_-]{1,50})?$/i.test(requested) ? requested : "/";
   for (const name of ["spl_oauth_verifier", "spl_oauth_next"])
     jar.set(name, "", { path: "/api/auth/callback", maxAge: 0 });
   if (!verifier || !/^[A-Za-z0-9_-]{10,256}$/.test(url.searchParams.get("code") || ""))

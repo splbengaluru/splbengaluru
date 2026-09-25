@@ -33,7 +33,10 @@ export default function PublicAuth() {
   const { user, googleEnabled } = state;
   if (!googleEnabled && !user) return null;
   if (user === undefined) return null;
-  if (!user) return <div className="public-auth"><a href="/api/auth/google">Sign in with Google</a></div>;
+  if (!user) {
+    const here = typeof window !== "undefined" ? window.location.pathname + (window.location.hash || "") : "/";
+    return <div className="public-auth"><a href={"/api/auth/google?next=" + encodeURIComponent(here)}>Sign in with Google</a></div>;
+  }
   return <div className="public-auth profile-root" ref={root}>
     <button className="profile-trigger" type="button" aria-label="Open profile menu" aria-haspopup="true" aria-expanded={open} onClick={() => { setOpen(v => !v); setEditing(false); }}><PixelAvatar avatar={avatar} size={35} /><span className="profile-chevron" aria-hidden="true">▾</span></button>
     {open && <div className="profile-panel" role="dialog" aria-label="Your profile">

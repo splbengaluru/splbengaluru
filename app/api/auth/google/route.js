@@ -5,7 +5,9 @@ export async function GET(req) {
   const cfg = config();
   if (!cfg || process.env.GOOGLE_OAUTH_ENABLED !== "true") return Response.redirect(new URL("/admin?auth=unavailable", req.url));
   const base = new URL(req.url);
-  const destination = base.searchParams.get("next") === "/admin" ? "/admin" : "/";
+  const requested = base.searchParams.get("next") || "/";
+  // Local paths only. No protocol-relative, backslashes, query or custom origins.
+  const destination = /^\/(?!\/)[a-z0-9\/_-]{0,110}(?:#[a-z0-9_-]{1,50})?$/i.test(requested) ? requested : "/";
   const verifier = randomBytes(32).toString("base64url");
   const challenge = createHash("sha256").update(verifier).digest("base64url");
   const jar = await cookies();
