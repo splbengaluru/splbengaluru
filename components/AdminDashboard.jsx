@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const labels = {
   audience_registrations: "Audience", founder_applications: "Founders",
-  vc_interest: "VC interest", sponsor_interest: "Sponsor interest",
+  vc_interest: "VC interest", sponsor_interest: "Sponsor interest", payment_orders: "Payments",
 };
 const short = (v) => {
   if (v == null || v === "") return "-";
@@ -17,6 +17,7 @@ const columns = {
   founder_applications: ["created_at", "full_name", "email", "phone", "startup_name", "one_liner", "stage", "sector", "city", "team_size", "video_url", "deck_url", "website_url", "linkedin_url", "status"],
   vc_interest: ["created_at", "full_name", "email", "phone", "firm", "role", "involvement", "focus", "check_size", "linkedin_url", "note"],
   sponsor_interest: ["created_at", "full_name", "email", "phone", "company", "role", "interest", "goal", "website_url"],
+  payment_orders: ["created_at", "account_email", "auth_user_id", "registration_id", "razorpay_order_id", "razorpay_payment_id", "amount_paise", "currency", "mode", "status", "paid_at"],
 };
 
 export default function AdminDashboard() {
@@ -74,7 +75,7 @@ export default function AdminDashboard() {
         <section className="admin-panel"><h2>Last 30 days</h2><div className="admin-overflow"><table><thead><tr><th>Day (IST)</th><th>Visitors</th><th>Views</th></tr></thead><tbody>{a.daily?.map(d => <tr key={d.day}><td>{d.day}</td><td>{d.visitors}</td><td>{d.views}</td></tr>)}</tbody></table></div>{!a.daily?.length && <p>No tracked page views yet.</p>}</section></div>
       <section className="admin-panel admin-identified"><h2>Signed-in visitors online</h2>{a.identified_online?.length ? <div className="admin-overflow"><table><thead><tr><th>Google account</th><th>Page</th><th>Last seen (IST)</th></tr></thead><tbody>{a.identified_online.map((v,i)=><tr key={i}><td>{v.email}</td><td>{v.path}</td><td>{new Date(v.last_seen).toLocaleString("en-IN", { timeZone:"Asia/Kolkata" })}</td></tr>)}</tbody></table></div> : <p>No signed-in visitors online. Anonymous browsers remain anonymous.</p>}</section>
       <section className="admin-panel admin-forms"><h2>Submissions</h2><div className="admin-tabs">{Object.entries(labels).map(([key, label]) => <button type="button" key={key} className={tab === key ? "selected" : ""} onClick={() => setTab(key)}>{label} <small>{data.forms[key]?.length || 0}{data.forms[key]?.length === 200 ? "+" : ""}</small></button>)}</div>
-        <p className="admin-explain">Showing the latest 200 per form. These registrations are not proof of payment.</p>
+        <p className="admin-explain">Showing the latest 200 per table. Registrations are not proof of payment; the Payments tab shows order status, mode and signed-in account linkage. Test orders are simulated, not real charges.</p>
         <div className="admin-overflow"><table><thead><tr>{columns[tab].map(c => <th key={c}>{c.replaceAll("_", " ")}</th>)}</tr></thead><tbody>{data.forms[tab]?.map(row => <tr key={row.id}>{columns[tab].map(c => <td key={c}>{c === "created_at" ? new Date(row[c]).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) : short(row[c])}</td>)}</tr>)}</tbody></table></div>{!data.forms[tab]?.length && <p>No submissions yet.</p>}
       </section><p className="admin-foot">*Browser activity based on page heartbeat; identified entries require a current Google session.</p>
     </div>}

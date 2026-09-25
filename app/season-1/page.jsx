@@ -114,7 +114,7 @@ export default function SeasonOnePage() {
   <div className="wrap">
     <span className="eyebrow">Tickets</span>
     <h2>Apply first. Then grab your seat.</h2>
-    <p className="lede">Founders apply free. A valid application unlocks the ₹799 ticket with matching Google sign-in. General registration is open without sign-in.</p>
+    <p className="lede">Founders apply free. A valid application unlocks the ₹799 ticket with matching Google sign-in. All forms use Google sign-in for accurate name and email.</p>
     <div className="tickets" id="apply">
       <div className="ticket rv"><span className="tag">Step 1 · Everyone</span><div className="price">FREE</div><span className="fine">Round 1 application</span><div className="perf"></div>
         <ul><li>Idea + video link</li><li>Pitch deck optional</li><li>Unlocks ₹799 ticket with the same Google account email</li><li>Shot at the live stage</li></ul>

@@ -212,3 +212,28 @@ returns jsonb language sql security definer set search_path = public as $$
 $$;
 revoke all on function public.analytics_snapshot() from public, anon, authenticated;
 grant execute on function public.analytics_snapshot() to service_role;
+
+-- One submission per verified Google account, per form. Apply after identity linkage.
+-- Existing anonymous rows stay untouched; unique email constraints already prevent
+-- an authenticated account from submitting again using the same email.
+create unique index if not exists audience_registration_auth_user_unique on public.audience_registrations(auth_user_id) where auth_user_id is not null;
+create unique index if not exists founder_application_auth_user_unique on public.founder_applications(auth_user_id) where auth_user_id is not null;
+create unique index if not exists vc_interest_auth_user_unique on public.vc_interest(auth_user_id) where auth_user_id is not null;
+create unique index if not exists sponsor_interest_auth_user_unique on public.sponsor_interest(auth_user_id) where auth_user_id is not null;
+
+-- Payment identity linkage: both the registration and each order name the verified Google account.
+-- Safe additive migration for existing rows, which remain joined through registration_id.
+alter table public.payment_orders add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+alter table public.payment_orders add column if not exists account_email text;
+create index if not exists payment_orders_auth_user_idx on public.payment_orders(auth_user_id, created_at desc);
+update public.payment_orders o set auth_user_id=a.auth_user_id, account_email=a.email
+from public.audience_registrations a where o.registration_id=a.id and o.auth_user_id is null;
+
+-- Member pixel avatar preferences, keyed to a verified Google auth account.
+create table if not exists public.member_avatars (
+  auth_user_id uuid primary key references auth.users(id) on delete cascade,
+  avatar jsonb not null,
+  updated_at timestamptz not null default now()
+);
+alter table public.member_avatars enable row level security;
+revoke all on public.member_avatars from anon, authenticated;

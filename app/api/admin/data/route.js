@@ -1,7 +1,7 @@
 import { adminIdentity } from "@/lib/admin";
 import { config, configStatus, rest } from "@/lib/supabase";
 export const dynamic = "force-dynamic";
-const tables = ["audience_registrations", "founder_applications", "vc_interest", "sponsor_interest"];
+const tables = ["audience_registrations", "founder_applications", "vc_interest", "sponsor_interest", "payment_orders"];
 export async function GET() {
   if (!config()) return Response.json({ error: "Supabase not connected yet", setup: configStatus() }, { status: 503 });
   try {

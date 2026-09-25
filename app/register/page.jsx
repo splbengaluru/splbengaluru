@@ -19,7 +19,7 @@ export default function RegisterPage() {
           <div className="price"><small>₹</small>999</div>
           <span className="fine">₹799 applicant ticket unlocks after a valid pitch application and matching Google sign-in.</span>
           <ul><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Play the quiz for a pitch slot</li></ul>
-          <p className="fine">No payment on this page. We'll send the payment link once sales open <span className="tba">date TBA</span>. Tickets are non-refundable.</p>
+          <p className="fine">Test checkout is available after registration. Razorpay test mode uses simulated payments; no real money moves. Live sales <span className="tba">TBA</span>.</p>
         </div>
       }
     />
