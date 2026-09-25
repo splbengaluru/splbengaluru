@@ -7,11 +7,10 @@ export async function GET(req) {
   if (process.env.GOOGLE_OAUTH_ENABLED !== "true") return Response.redirect(new URL("/admin?auth=unavailable", url.origin));
   const jar = await cookies();
   const verifier = jar.get("spl_oauth_verifier")?.value;
-  const state = jar.get("spl_oauth_state")?.value;
   const dest = jar.get("spl_oauth_next")?.value === "/admin" ? "/admin" : "/";
-  for (const name of ["spl_oauth_verifier", "spl_oauth_state", "spl_oauth_next"])
+  for (const name of ["spl_oauth_verifier", "spl_oauth_next"])
     jar.set(name, "", { path: "/api/auth/callback", maxAge: 0 });
-  if (!verifier || !state || state !== url.searchParams.get("state") || !/^[a-f0-9]{40}$/.test(state) || !/^[A-Za-z0-9_-]{10,256}$/.test(url.searchParams.get("code") || ""))
+  if (!verifier || !/^[A-Za-z0-9_-]{10,256}$/.test(url.searchParams.get("code") || ""))
     return Response.redirect(new URL(dest + "?auth=failed", url.origin));
   try {
     const result = await auth("token?grant_type=pkce", { auth_code: url.searchParams.get("code"), code_verifier: verifier });
