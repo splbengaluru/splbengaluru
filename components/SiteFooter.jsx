@@ -12,7 +12,7 @@ export default function SiteFooter() {
       <div><h4>Follow</h4><ul><li>Instagram <span className="tba">link TBA</span></li><li>X <span className="tba">link TBA</span></li><li>LinkedIn <span className="tba">link TBA</span></li></ul></div>
     </div>
   </div>
-  <div className="bottom"><span>© <span id="yr">2026</span> Startup League Bengaluru (SPL)</span><span>Terms <span className="tba">TBA</span> · Privacy <span className="tba">TBA</span> · Code of conduct <span className="tba">TBA</span></span></div>
+  <div className="bottom"><span>© <span id="yr">2026</span> Startup League Bengaluru (SPL)</span><span>Terms <span className="tba">TBA</span> · <a href="/privacy">Privacy</a> · Code of conduct <span className="tba">TBA</span></span></div>
 </div></footer>
   );
 }

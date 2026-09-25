@@ -351,3 +351,6 @@ footer .brand .wm .trophy{height:46px}
 
 /* Four ticket routes: equal cards on wide screens, stack cleanly on phones. */
 @media(min-width:901px){#tickets .tickets{grid-template-columns:repeat(4,minmax(0,1fr))}#tickets .ticket{min-width:0;padding:25px 19px}#tickets .ticket .perf{margin-left:-19px;margin-right:-19px}#tickets .ticket .price{font-size:clamp(42px,4.2vw,64px)}}
+
+/* Short public information page. */
+.policy-hero{background:var(--league-blue);color:var(--offwhite);padding:64px 0 70px}.policy-hero .eyebrow{color:var(--volt)}.policy-hero h1{font:900 clamp(60px,10vw,130px)/.95 var(--font-hero);color:var(--volt);text-transform:uppercase;text-shadow:8px 8px 0 var(--shadow-blue);margin:20px 0}.policy-hero p{font-size:clamp(17px,2vw,22px);color:#E4E8FF}.policy-body{background:var(--offwhite);padding:64px 0 90px}.policy-sheet{max-width:760px}.policy-sheet h2{font:400 clamp(26px,4vw,42px)/1.05 var(--font-display);text-transform:uppercase;margin:30px 0 12px}.policy-sheet h2:first-child{margin-top:0}.policy-sheet p{font-size:16px;line-height:1.7;margin:0 0 15px;color:var(--ink)}.policy-sheet a{color:var(--league-blue);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}@media(max-width:600px){.policy-hero{padding:50px 0 56px}.policy-body{padding:42px 0 70px}.policy-hero h1{text-shadow:5px 5px 0 var(--shadow-blue)}}
