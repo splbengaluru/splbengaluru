@@ -2,6 +2,8 @@ import { randomUUID } from "node:crypto";
 import { sameOrigin } from "@/lib/admin";
 import { rest, config } from "@/lib/supabase";
 import { razorpayAPI, razorpayConfig } from "@/lib/razorpay";
+import { publicIdentity } from "@/lib/public-auth";
+import { ticketEligibility } from "@/lib/ticket-eligibility";
 
 export async function POST(req) {
   if (!sameOrigin(req)) return Response.json({ error: "Invalid request" }, { status: 403 });
@@ -14,6 +16,11 @@ export async function POST(req) {
     const rows = await (await rest(`audience_registrations?id=eq.${b.registrationId}&email=eq.${encodeURIComponent(b.email.trim())}&select=id,full_name,email,phone,ticket_type,referral_code,registration_number,payment_status,paid_ticket_number,test_ticket_number&limit=1`)).json();
     const row = rows[0];
     if (!row) return Response.json({ error: "Registration not found." }, { status: 404 });
+    if (row.ticket_type === "applied_not_selected") {
+      const identity = await publicIdentity();
+      if (!identity || identity.email.toLowerCase() !== row.email.toLowerCase() || !(await ticketEligibility(identity)).applied)
+        return Response.json({ error: "Google sign-in with the application email is required for this ticket." }, { status: 403 });
+    }
     if (row.payment_status === "paid" || row.test_ticket_number) return Response.json({ error: "Already paid." }, { status: 409 });
     // Referral is self-reported until code issuance/verification is built. Keep that discount unavailable.
     const amount = row.ticket_type === "applied_not_selected" ? 79900 : 99900;

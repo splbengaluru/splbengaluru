@@ -114,17 +114,18 @@ export default function SeasonOnePage() {
   <div className="wrap">
     <span className="eyebrow">Tickets</span>
     <h2>Apply first. Then grab your seat.</h2>
-    <p className="lede">Founders apply free. Everyone else can register straight away for a General ticket. Referral code: ₹100 off.</p>
+    <p className="lede">Founders apply free. A valid application unlocks the ₹799 ticket with matching Google sign-in. General registration is open without sign-in.</p>
     <div className="tickets" id="apply">
       <div className="ticket rv"><span className="tag">Step 1 · Everyone</span><div className="price">FREE</div><span className="fine">Round 1 application</span><div className="perf"></div>
-        <ul><li>Idea + video link</li><li>Pitch deck optional</li><li>Unlocks the ₹799 ticket if not selected</li><li>Shot at the live stage</li></ul>
+        <ul><li>Idea + video link</li><li>Pitch deck optional</li><li>Unlocks ₹799 ticket with the same Google account email</li><li>Shot at the live stage</li></ul>
         <a className="btn btn-ghost" href="/apply">Apply now</a></div>
-      <div className="ticket feat rv"><span className="tag">Applied, not selected</span><div className="price"><small>₹</small>799</div><span className="fine">₹200 off base · referral on top <span className="tba">TBC</span></span><div className="perf"></div>
-        <ul><li>For founders who applied to pitch and weren't selected</li><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Networking with founders and VCs</li></ul>
+      <div className="ticket feat rv"><span className="tag">Pitch applicants</span><div className="price"><small>₹</small>799</div><span className="fine">Locked until a valid pitch application + matching Google sign-in</span><div className="perf"></div>
+        <ul><li>For founders with a valid pitch application</li><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Networking with founders and VCs</li></ul>
         <a className="btn" href="/register">Register</a></div>
-      <div className="ticket rv"><span className="tag">General · base ticket</span><div className="price"><small>₹</small>999</div><span className="fine">₹899 with a referral code</span><div className="perf"></div>
+      <div className="ticket rv"><span className="tag">General · base ticket</span><div className="price"><small>₹</small>999</div><span className="fine">Referral discount rules <span className="tba">TBA</span></span><div className="perf"></div>
         <ul><li>Base price for attendees</li><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Play the quiz for a pitch slot</li></ul>
         <a className="btn btn-ghost" href="/register">Register</a></div>
+      <div className="ticket rv showcase-card"><span className="tag">Selected founders · locked</span><div className="price"><small>₹</small>4,999</div><span className="fine">Showcase pass unlocks only after SPL selects your application. Purchase details <span className="tba">TBA</span>.</span><div className="perf"></div><ul><li>Only for founders selected by SPL</li><li>Pitch on stage after Round 2</li><li>Purchase details <span className="tba">TBA</span></li></ul><a className="btn btn-ghost" href="/apply">Apply free first</a></div>
     </div>
     <p className="note">Selected startups: ₹4,999 showcase pass to pitch on stage. Tickets are non-refundable. GST <span className="tba">inclusive/exclusive TBC</span> · VC track and VIP <span className="tba">TBA</span> · Sales open <span className="tba">date TBA</span></p>
   </div>
@@ -139,7 +140,7 @@ export default function SeasonOnePage() {
     <div className="rv">
       <p className="lede" style={{"marginTop": "34px"}}>Startups and companies can buy a booth to demo their product, meet other founders and talk to the audience. Sponsors get reach before, during and after the event, with opt-in leads only.</p>
       <p className="note">Booth and sponsor pricing <span className="tba">TBA</span></p>
-      <div className="cta-row" style={{"marginTop": "24px"}}><a className="btn btn-accent" href="/#contact">Enquire about a booth</a></div>
+      <div className="cta-row" style={{"marginTop": "24px"}}><a className="btn btn-accent" href="https://wa.me/919945958602?text=Hi%2C+I%27d+like+to+enquire+about+an+SPL+Bengaluru+booth." target="_blank" rel="noopener noreferrer">Enquire about a booth</a></div>
     </div>
   </div>
 </section>
@@ -150,7 +151,7 @@ export default function SeasonOnePage() {
     <h2>Questions.</h2>
     <div className="faq">
       <details><summary>Is applying really free?</summary><p>Yes. Round 1 is free: your idea and a video link. A pitch deck is optional.</p></details>
-      <details><summary>Do I need to apply to get a ticket?</summary><p>No. Anyone can register for a General ticket at ₹999 (₹899 with a referral code). Founders who applied to pitch and weren't selected get ₹200 off, so ₹799.</p></details>
+      <details><summary>Do I need to apply to get a ticket?</summary><p>No. Anyone can register for a General ticket at ₹999. A valid pitch application unlocks the ₹799 applicant ticket when you sign in with Google using the same application email.</p></details>
       <details><summary>What does it cost to pitch?</summary><p>If you're one of the 15 selected startups, the showcase pass to pitch on stage is ₹4,999. Payment timing and withdrawal terms <span className="tba">TBA</span></p></details>
       <details><summary>How long is a pitch?</summary><p>5 minutes, followed by Q&amp;A.</p></details>
       <details><summary>Who judges?</summary><p>5 judges, all top-level VCs from the room. They pick the top 3.</p></details>

@@ -1,8 +1,10 @@
 // Shared shell for form pages. `standalone` pages (interest forms) get a slim brand bar
 // instead of the full site nav, so they work as links shared on their own.
 import SiteHeader from "@/components/SiteHeader";
+import PublicAuth from "@/components/PublicAuth";
 import SiteFooter from "@/components/SiteFooter";
 import BrandForm from "@/components/BrandForm";
+import TicketEligibility from "@/components/TicketEligibility";
 
 export default function FormPage({ type, eyebrow, title, sub, sticker, aside, standalone = false }) {
   return (
@@ -10,7 +12,7 @@ export default function FormPage({ type, eyebrow, title, sub, sticker, aside, st
       {standalone ? (
         <header className="nav slim"><div className="wrap">
           <a className="brand" href="/" aria-label="Startup League Bengaluru home"><span className="wm"><span className="lockup">SPL</span><img className="trophy" src="/assets/trophy.png?v=2" alt="" width="310" height="287" /><span className="city">BENGALURU</span></span></a>
-          <a className="slim-link" href="/season-1">Season 1 · 24 Oct 2026 →</a>
+          <PublicAuth /><a className="slim-link" href="/season-1">Season 1 · 24 Oct 2026 →</a>
         </div></header>
       ) : (
         <SiteHeader active="s1" />
@@ -27,7 +29,7 @@ export default function FormPage({ type, eyebrow, title, sub, sticker, aside, st
       </section>
       <section className="form-body">
         <div className="wrap form-grid">
-          <div className="form-card"><BrandForm type={type} /></div>
+          <div className="form-card">{type === "audience" && <TicketEligibility />}<BrandForm type={type} /></div>
           {aside && <aside className="form-aside">{aside}</aside>}
         </div>
       </section>

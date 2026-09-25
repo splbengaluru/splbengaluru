@@ -345,3 +345,9 @@ footer .brand .wm .trophy{height:46px}
 @keyframes tg-nudge{0%,100%{translate:0 0}50%{translate:-3px 4px}}
 @media(max-width:860px){.tg{margin-top:100px}.tg-doodle{left:auto;right:62%;width:118px;height:88px}.tg-doodle svg{transform:scaleX(-1)}.tg-doodle text{transform:scaleX(-1) rotate(9deg);transform-box:fill-box;transform-origin:center}}
 @media(prefers-reduced-motion:reduce){.tg-doodle,.tg-doodle *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
+/* Google account controls stay compact next to the primary nav. */
+.public-auth{display:flex;align-items:center;gap:8px;font:700 11px var(--font-mono);min-width:0}.public-auth span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:140px;color:var(--offwhite)}.public-auth a,.public-auth button{color:var(--volt);background:transparent;border:1px solid var(--volt);padding:8px;text-decoration:none;font:inherit;cursor:pointer;white-space:nowrap}.nav.slim .public-auth{margin-left:auto}.nav.slim .public-auth span{color:var(--offwhite)}@media(max-width:860px){.nav .public-auth{font-size:10px}.nav.slim .slim-link{display:none}.public-auth span{max-width:95px}}
+@media(max-width:860px){.nav:not(.slim) .wrap{height:auto;min-height:58px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.nav:not(.slim) .nav-right{flex-wrap:wrap;justify-content:flex-end;gap:6px}.nav:not(.slim) .public-auth{flex-basis:100%;justify-content:flex-end}.nav:not(.slim) .public-auth a{padding:4px 7px}}
+
+/* Four ticket routes: equal cards on wide screens, stack cleanly on phones. */
+@media(min-width:901px){#tickets .tickets{grid-template-columns:repeat(4,minmax(0,1fr))}#tickets .ticket{min-width:0;padding:25px 19px}#tickets .ticket .perf{margin-left:-19px;margin-right:-19px}#tickets .ticket .price{font-size:clamp(42px,4.2vw,64px)}}

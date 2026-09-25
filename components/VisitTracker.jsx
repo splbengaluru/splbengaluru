@@ -20,7 +20,9 @@ export default function VisitTracker() {
     const timer = setInterval(() => send("pulse"), 60000);
     const visible = () => { if (document.visibilityState === "visible") send("pulse"); };
     document.addEventListener("visibilitychange", visible);
-    return () => { clearInterval(timer); document.removeEventListener("visibilitychange", visible); };
+    const authChange = () => send("pulse");
+    window.addEventListener("spl-auth-change", authChange);
+    return () => { clearInterval(timer); document.removeEventListener("visibilitychange", visible); window.removeEventListener("spl-auth-change", authChange); };
   }, [path]);
   return null;
 }

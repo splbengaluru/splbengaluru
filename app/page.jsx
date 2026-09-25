@@ -112,7 +112,7 @@ export default function HomePage() {
       <span className="eyebrow">Sponsors &amp; booths</span>
       <h2>Put your product in front of <span className="hl">founders.</span></h2>
       <p className="lede">If your customers are startup founders - payments, fintech infrastructure, hiring, CRM and sales tools, production partners - this is your room.</p>
-      <div className="cta-row" style={{"marginTop": "30px"}}><a className="btn btn-accent" href="#contact">Get the sponsor deck</a><a className="btn btn-ghost" href="/season-1#booths">Booths</a></div>
+      <div className="cta-row" style={{"marginTop": "30px"}}><a className="btn btn-accent" href="/interest/sponsor">Register sponsor interest</a><a className="btn btn-ghost" href="/season-1#booths">Booths</a></div>
     </div>
     <div className="card rv">
       <span className="k">What sponsors get</span>
@@ -134,7 +134,7 @@ export default function HomePage() {
     <span className="eyebrow">Get involved</span>
     <h2>Help two dumb guys<br />host their first event.</h2>
     <p className="lede" style={{"margin": "0 auto"}}>Founder, investor, sponsor, creator or volunteer - there's a spot for you.</p>
-    <div className="cta-row"><a className="btn btn-accent" href="/apply">Apply to pitch</a><a className="btn btn-ghost" href="mailto:">Email us <span className="tba">address TBA</span></a></div>
+    <div className="cta-row"><a className="btn btn-accent" href="/apply">Apply to pitch</a><a className="btn btn-ghost" href="/interest/vc">VC interest</a><a className="btn btn-ghost" href="/interest/sponsor">Sponsor interest</a><a className="btn btn-ghost" href="/register">Get a ticket</a><a className="btn btn-ghost" href="https://wa.me/919945958602?text=Hi%2C+I%27d+like+to+enquire+about+SPL+Bengaluru." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a></div>
   </div>
 <img className="sky-band" src="/assets/skyline-1200.webp" alt="" aria-hidden="true" loading="lazy" /></section>
 </main>

@@ -24,6 +24,7 @@ export default function AdminDashboard() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState("audience_registrations");
+  const [googleEnabled, setGoogleEnabled] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   async function load(silent = false) {
     if (!silent) setLoading(true);
@@ -35,7 +36,7 @@ export default function AdminDashboard() {
     } catch { setError("No connection. Try again."); }
     finally { if (!silent) setLoading(false); }
   }
-  useEffect(() => { load(); const timer = setInterval(() => { if (document.visibilityState === "visible") load(true); }, 30000); return () => clearInterval(timer); }, []);
+  useEffect(() => { fetch("/api/auth/me", { cache:"no-store" }).then(r=>r.json()).then(d=>setGoogleEnabled(!!d.googleEnabled)).catch(()=>{}); load(); const timer = setInterval(() => { if (document.visibilityState === "visible") load(true); }, 30000); return () => clearInterval(timer); }, []);
   async function login(e) {
     e.preventDefault(); setLoading(true); setError("");
     try {
@@ -59,9 +60,9 @@ export default function AdminDashboard() {
         <label>Email<input type="email" required autoComplete="username" value={credentials.email} onChange={e => setCredentials({ ...credentials, email: e.target.value })} /></label>
         <label>Password<input type="password" required autoComplete="current-password" value={credentials.password} onChange={e => setCredentials({ ...credentials, password: e.target.value })} /></label>
         <button type="submit" disabled={loading}>{loading ? "Checking..." : "Sign in →"}</button>
-      </form>{error && <p className="admin-error" role="alert">{error}</p>}</section> : <div className="admin-content">
+      </form>{googleEnabled && <><p className="admin-or">or</p><a className="admin-google" href="/api/auth/google?next=/admin">Sign in with Google →</a></>}{error && <p className="admin-error" role="alert">{error}</p>}</section> : <div className="admin-content">
       <div className="admin-title"><div><p className="admin-kicker">Private / {data.admin}</p><h1>Control room.</h1></div><button type="button" onClick={() => load()} disabled={loading}>Refresh ↻</button></div>
-      <p className="admin-explain">Live activity refreshes every 30 seconds while this tab is open. Active means an anonymous browser seen in the last two minutes, not a known attendee. Counts start when tracking is connected; ad blockers and disabled JavaScript can undercount.</p>
+      <p className="admin-explain">Live activity refreshes every 30 seconds while this tab is open. Active means a browser seen in the last two minutes; only signed-in browsers show an account. Counts start when tracking is connected; ad blockers and disabled JavaScript can undercount.</p>
       {error && <p className="admin-error" role="alert">{error}</p>}
       <div className="admin-metrics">
         <article><strong>{a.active ?? "-"}</strong><span>Online now*</span></article>
@@ -71,10 +72,11 @@ export default function AdminDashboard() {
       </div>
       <div className="admin-panels"><section className="admin-panel"><h2>Active pages</h2>{a.active_pages?.length ? <ul>{a.active_pages.map(p => <li key={p.path}><span>{p.path}</span><b>{p.count}</b></li>)}</ul> : <p>No active visitors right now.</p>}</section>
         <section className="admin-panel"><h2>Last 30 days</h2><div className="admin-overflow"><table><thead><tr><th>Day (IST)</th><th>Visitors</th><th>Views</th></tr></thead><tbody>{a.daily?.map(d => <tr key={d.day}><td>{d.day}</td><td>{d.visitors}</td><td>{d.views}</td></tr>)}</tbody></table></div>{!a.daily?.length && <p>No tracked page views yet.</p>}</section></div>
+      <section className="admin-panel admin-identified"><h2>Signed-in visitors online</h2>{a.identified_online?.length ? <div className="admin-overflow"><table><thead><tr><th>Google account</th><th>Page</th><th>Last seen (IST)</th></tr></thead><tbody>{a.identified_online.map((v,i)=><tr key={i}><td>{v.email}</td><td>{v.path}</td><td>{new Date(v.last_seen).toLocaleString("en-IN", { timeZone:"Asia/Kolkata" })}</td></tr>)}</tbody></table></div> : <p>No signed-in visitors online. Anonymous browsers remain anonymous.</p>}</section>
       <section className="admin-panel admin-forms"><h2>Submissions</h2><div className="admin-tabs">{Object.entries(labels).map(([key, label]) => <button type="button" key={key} className={tab === key ? "selected" : ""} onClick={() => setTab(key)}>{label} <small>{data.forms[key]?.length || 0}{data.forms[key]?.length === 200 ? "+" : ""}</small></button>)}</div>
         <p className="admin-explain">Showing the latest 200 per form. These registrations are not proof of payment.</p>
         <div className="admin-overflow"><table><thead><tr>{columns[tab].map(c => <th key={c}>{c.replaceAll("_", " ")}</th>)}</tr></thead><tbody>{data.forms[tab]?.map(row => <tr key={row.id}>{columns[tab].map(c => <td key={c}>{c === "created_at" ? new Date(row[c]).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) : short(row[c])}</td>)}</tr>)}</tbody></table></div>{!data.forms[tab]?.length && <p>No submissions yet.</p>}
-      </section><p className="admin-foot">*Anonymous activity based on page heartbeat. Not a roster of logged-in people.</p>
+      </section><p className="admin-foot">*Browser activity based on page heartbeat; identified entries require a current Google session.</p>
     </div>}
   </main>;
 }

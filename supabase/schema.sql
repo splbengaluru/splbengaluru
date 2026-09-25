@@ -164,3 +164,46 @@ begin
 end $$;
 revoke all on function public.confirm_captured_payment(text,text,integer,text) from public, anon, authenticated;
 grant execute on function public.confirm_captured_payment(text,text,integer,text) to service_role;
+
+-- Optional Google identity linkage for NEW submissions only. Run after initial schema.
+alter table public.audience_registrations add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+alter table public.founder_applications add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+alter table public.vc_interest add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+alter table public.sponsor_interest add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+alter table public.visitor_sessions add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+create index if not exists visitor_sessions_auth_last_seen_idx on public.visitor_sessions(auth_user_id, last_seen desc);
+create or replace function public.record_visit(p_visitor uuid, p_session uuid, p_path text, p_view boolean, p_user uuid default null)
+returns void language plpgsql security invoker set search_path = public as $$
+begin
+  insert into public.visitor_sessions(session_id, visitor_id, path, views, auth_user_id)
+  values (p_session, p_visitor, p_path, case when p_view then 1 else 0 end, p_user)
+  on conflict (session_id) do update set last_seen=now(), path=excluded.path,
+    views=visitor_sessions.views + excluded.views, auth_user_id=excluded.auth_user_id;
+  if p_view then
+    insert into public.page_views(session_id, visitor_id, path)
+    values (p_session, p_visitor, p_path);
+  end if;
+end $$;
+revoke all on function public.record_visit(uuid,uuid,text,boolean,uuid) from public, anon, authenticated;
+grant execute on function public.record_visit(uuid,uuid,text,boolean,uuid) to service_role;
+create or replace function public.analytics_snapshot()
+returns jsonb language sql security invoker set search_path = public as $$
+  select jsonb_build_object(
+    'active', (select count(*) from public.visitor_sessions where last_seen > now() - interval '2 minutes'),
+    'identified_online', (select coalesce(jsonb_agg(jsonb_build_object('email', email, 'path', path, 'last_seen', last_seen) order by last_seen desc), '[]'::jsonb)
+      from (select u.email, s.path, max(s.last_seen) as last_seen from public.visitor_sessions s
+            join auth.users u on u.id=s.auth_user_id where s.last_seen > now() - interval '2 minutes'
+            group by u.id,u.email,s.path) users_online),
+    'active_pages', (select coalesce(jsonb_agg(jsonb_build_object('path', path, 'count', count) order by count desc), '[]'::jsonb)
+      from (select path, count(*) as count from public.visitor_sessions where last_seen > now() - interval '2 minutes' group by path) p),
+    'today_views', (select count(*) from public.page_views where viewed_at >= date_trunc('day', now() at time zone 'Asia/Kolkata') at time zone 'Asia/Kolkata'),
+    'today_visitors', (select count(distinct visitor_id) from public.page_views where viewed_at >= date_trunc('day', now() at time zone 'Asia/Kolkata') at time zone 'Asia/Kolkata'),
+    'total_views', (select count(*) from public.page_views),
+    'total_visitors', (select count(distinct visitor_id) from public.page_views),
+    'daily', (select coalesce(jsonb_agg(jsonb_build_object('day', day, 'views', views, 'visitors', visitors) order by day desc), '[]'::jsonb)
+      from (select (viewed_at at time zone 'Asia/Kolkata')::date as day, count(*) as views, count(distinct visitor_id) as visitors
+            from public.page_views where viewed_at >= now() - interval '30 days' group by 1) d)
+  )
+$$;
+revoke all on function public.analytics_snapshot() from public, anon, authenticated;
+grant execute on function public.analytics_snapshot() to service_role;
