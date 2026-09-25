@@ -25,6 +25,7 @@ export async function POST(req) {
         return Response.json({ error: "Google sign-in with the application email is required for this ticket." }, { status: 403 });
     }
     if (row.payment_status === "paid" || row.test_ticket_number) return Response.json({ error: "Already paid." }, { status: 409 });
+    // The amount remains authoritative here; a client cannot choose or discount it.
     // Referral is self-reported until code issuance/verification is built. Keep that discount unavailable.
     const amount = row.ticket_type === "applied_not_selected" ? 79900 : 99900;
     const order = await razorpayAPI("orders", { method: "POST", body: JSON.stringify({ amount, currency: "INR", receipt: randomUUID(), notes: { registration_id: row.id, auth_user_id: identity.id, account_email: identity.email }, partial_payment: false }) });

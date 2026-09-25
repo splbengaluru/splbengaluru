@@ -21,8 +21,8 @@ async function rateLimited(ip) {
 
 async function priorSubmission(form, identity) {
   // Fetch by either verified UID or email to also catch old anonymous rows.
-  const rows = await (await rest(`${form.table}?or=(auth_user_id.eq.${identity.id},email.ilike.${encodeURIComponent(identity.email)})&select=id,email,auth_user_id&limit=100`)).json();
-  return rows.some(row => row.auth_user_id === identity.id || row.email.toLowerCase() === identity.email.toLowerCase());
+  const rows = await (await rest(`${form.table}?or=(auth_user_id.eq.${identity.id},email.ilike.${encodeURIComponent(identity.email)})&select=id,email,auth_user_id${form.table === "audience_registrations" ? ",registration_number,test_ticket_number" : ""}&limit=100`)).json();
+  return rows.find(row => row.auth_user_id === identity.id || row.email.toLowerCase() === identity.email.toLowerCase()) || null;
 }
 export async function GET(req, { params }) {
   const { type } = await params;
@@ -30,7 +30,11 @@ export async function GET(req, { params }) {
   if (!form) return json({ error: "Unknown form" }, 404);
   const identity = await publicIdentity();
   if (!identity) return json({ signedIn: false, submitted: false });
-  try { return json({ signedIn: true, name: identity.name, email: identity.email, submitted: await priorSubmission(form, identity) }); }
+  try {
+    const existing = await priorSubmission(form, identity);
+    return json({ signedIn: true, name: identity.name, email: identity.email, submitted: !!existing,
+      ...(type === "audience" && existing?.auth_user_id === identity.id ? { registrationId: existing.id, registrationNumber: existing.registration_number, testTicketNumber: existing.test_ticket_number } : {}) });
+  }
   catch { return json({ error: "Couldn't check your form status. Try again." }, 503); }
 }
 export async function POST(req, { params }) {

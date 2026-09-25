@@ -92,7 +92,9 @@ export default function BrandForm({ type }) {
   if (!identity.ok) return <p className="bf-auth-note" role="alert">{identity.error || "Couldn't check your form status. Refresh to try again."}</p>;
   if (!identity.signedIn) return <div className="bf-auth-note"><strong>Sign in with Google to continue.</strong><p>We'll use the name and email on your Google account, so neither gets mistyped.</p><a className="btn btn-accent" href={"/api/auth/google?next=" + encodeURIComponent(typeof window !== "undefined" ? window.location.pathname : "/")}>Sign in with Google →</a></div>;
   if (!identity.name) return <p className="bf-auth-note" role="alert">Your Google account didn't provide a name. Check your Google profile and sign in again.</p>;
-  if (identity.submitted && state.status !== "done") return <div className="bf-auth-note"><strong>You've already submitted this form.</strong><p>One submission per Google account. Your earlier entry is still saved.</p></div>;
+  if (identity.submitted && state.status !== "done") return <div className="bf-auth-note"><strong>You've already submitted this form.</strong><p>One submission per Google account. Your earlier entry is still saved.</p>
+    {type === "audience" && identity.registrationId && <>{identity.registrationNumber && <p>Registration #{identity.registrationNumber}</p>}{identity.testTicketNumber ? <p>Test ticket #{identity.testTicketNumber} issued. No real money was charged.</p> : <TestCheckout registrationId={identity.registrationId} email={identity.email} />}</>}
+  </div>;
 
   if (state.status === "done")
     return (
