@@ -18,7 +18,7 @@ export async function GET() {
     const r = await fetch(cfg + "/rest/v1/rpc/analytics_snapshot", { method:"POST", headers:{ apikey:key, ...(key.startsWith("sb_secret_") ? {} : {Authorization:`Bearer ${key}`}), "Content-Type":"application/json" }, body:"{}", cache:"no-store" });
     snapshotStatus = String(r.status);
     if (r.ok) { const d=await r.json(); snapshot=Array.isArray(d?.identified_online); snapshotStatus += ":" + Object.keys(d || {}).sort().join(","); }
-    else { const d=await r.json(); snapshotStatus += ":" + String(d.code || ""); }
+    else { const d=await r.json(); snapshotStatus += ":" + String(d.code || "") + ":" + String(d.message || "").replace(/[^a-zA-Z0-9 _.-]/g, "").slice(0,120); }
   } catch(e) { snapshotStatus="error"; }
   return Response.json({ columns:Object.fromEntries(tables.map((t,i)=>[t,columns[i]])), rpc, snapshot, snapshotStatus }, { headers:{"Cache-Control":"no-store"} });
 }
