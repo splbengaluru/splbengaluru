@@ -1,9 +1,9 @@
 import { adminIdentity } from "@/lib/admin";
-import { config, rest } from "@/lib/supabase";
+import { config, configStatus, rest } from "@/lib/supabase";
 export const dynamic = "force-dynamic";
 const tables = ["audience_registrations", "founder_applications", "vc_interest", "sponsor_interest"];
 export async function GET() {
-  if (!config()) return Response.json({ error: "Supabase not connected yet" }, { status: 503 });
+  if (!config()) return Response.json({ error: "Supabase not connected yet", setup: configStatus() }, { status: 503 });
   try {
     const admin = await adminIdentity();
     if (!admin) return Response.json({ error: "Sign in to see the dashboard." }, { status: 401 });
