@@ -172,6 +172,9 @@ alter table public.vc_interest add column if not exists auth_user_id uuid refere
 alter table public.sponsor_interest add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
 alter table public.visitor_sessions add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
 create index if not exists visitor_sessions_auth_last_seen_idx on public.visitor_sessions(auth_user_id, last_seen desc);
+-- Remove the old four-argument overload first; otherwise PostgREST may see two
+-- matching record_visit signatures when p_user is omitted.
+drop function if exists public.record_visit(uuid,uuid,text,boolean);
 create or replace function public.record_visit(p_visitor uuid, p_session uuid, p_path text, p_view boolean, p_user uuid default null)
 returns void language plpgsql security invoker set search_path = public as $$
 begin
