@@ -22,7 +22,7 @@ const svgUrl = (avatar, clicking) => {
   const accent = clicking ? `${rect(4, 1, 2, 2, c.volt)}${rect(1, 5, 2, 2, "#f27bbd")}` : "";
   // Put the avatar below-right and the pointing hand above-left as in the supplied mock.
   const avatarParts = `<g transform="translate(0 8)">${rect(21, 10, 22, 29, c.ink)}${rect(23, 10, 17, 21, skin)}${longHair ? rect(21, 9, 22, 25, hair) + rect(23, 10, 17, 21, skin) : ""}${hairstyle}${rect(26, 17, 3, 3, c.ink)}${rect(36, 17, 3, 3, c.ink)}${rect(31, 24, 5, 3, "#923f3d")}${beard}${rect(24, 32, 16, 6, shirt)}${rect(23, 30, 3, 2, "#333ab4")}${rect(40, 30, 3, 2, "#333ab4")}</g>`;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="43" height="47" viewBox="0 0 43 47" shape-rendering="crispEdges">${avatarParts}<image href="data:image/png;base64,${CURSOR_HAND}" x="1" y="1" width="21" height="20"/>${accent}</svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="43" height="47" viewBox="0 0 43 47" shape-rendering="crispEdges">${avatarParts}${rect(19, 17, 3, 2, skin)}<image href="data:image/png;base64,${CURSOR_HAND}" x="1" y="1" width="21" height="20"/>${accent}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 1 1, auto`;
 };
 export default function AvatarCursor({ avatar }) {
