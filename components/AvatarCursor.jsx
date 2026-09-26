@@ -20,9 +20,9 @@ const svgUrl = (avatar, clicking) => {
   const beard = a.facialHair === "none" ? "" : a.facialHair === "mustache" ? rect(29, 25, 7, 2, hair) : a.facialHair === "stubble" ? rect(25, 28, 2, 2, hair) + rect(37, 28, 2, 2, hair) : rect(25, 27, 14, 4, hair) + rect(27, 23, 3, 1, hair) + rect(36, 23, 3, 1, hair);
   const longHair = ["bob", "long"].includes(a.hairstyle);
   const accent = clicking ? `${rect(4, 1, 2, 2, c.volt)}${rect(1, 5, 2, 2, "#f27bbd")}` : "";
-  // Put the avatar below-right and the pointing hand above-left as in the supplied mock.
-  const avatarParts = `<g transform="translate(-4 4)">${rect(21, 10, 22, 29, c.ink)}${rect(23, 10, 17, 21, skin)}${longHair ? rect(21, 9, 22, 25, hair) + rect(23, 10, 17, 21, skin) : ""}${hairstyle}${rect(26, 17, 3, 3, c.ink)}${rect(36, 17, 3, 3, c.ink)}${rect(31, 24, 5, 3, "#923f3d")}${beard}${rect(24, 32, 16, 6, shirt)}${rect(23, 30, 3, 2, "#333ab4")}${rect(40, 30, 3, 2, "#333ab4")}</g>`;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="39" height="43" viewBox="0 0 39 43" shape-rendering="crispEdges">${avatarParts}${rect(15, 13, 3, 2, skin)}<image href="data:image/png;base64,${CURSOR_HAND}" x="1" y="1" width="21" height="20"/>${accent}</svg>`;
+  // Hand and head sit side-by-side at the same height, matching the latest owner mock.
+  const avatarParts = `<g transform="translate(-4 -4)">${rect(21, 10, 22, 29, c.ink)}${rect(23, 10, 17, 21, skin)}${longHair ? rect(21, 9, 22, 25, hair) + rect(23, 10, 17, 21, skin) : ""}${hairstyle}${rect(26, 17, 3, 3, c.ink)}${rect(36, 17, 3, 3, c.ink)}${rect(31, 24, 5, 3, "#923f3d")}${beard}${rect(24, 32, 16, 6, shirt)}${rect(23, 30, 3, 2, "#333ab4")}${rect(40, 30, 3, 2, "#333ab4")}</g>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" shape-rendering="crispEdges">${avatarParts}${rect(15, 5, 3, 2, skin)}<image href="data:image/png;base64,${CURSOR_HAND}" x="1" y="1" width="21" height="20"/>${accent}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 1 1, auto`;
 };
 export default function AvatarCursor({ avatar }) {
