@@ -359,5 +359,6 @@ footer .brand .wm .trophy{height:46px}
 /* The signed-in member's pointer follows their saved avatar; inputs retain their text caret. */
 @media (hover: hover) and (pointer: fine) {
   html.spl-custom-cursor, html.spl-custom-cursor *:not(input):not(textarea):not([contenteditable="true"]) { cursor: var(--spl-cursor) !important; }
+  html.spl-custom-cursor.spl-cursor-mid, html.spl-custom-cursor.spl-cursor-mid *:not(input):not(textarea):not([contenteditable="true"]) { cursor: var(--spl-cursor-mid) !important; }
   html.spl-custom-cursor.spl-cursor-click, html.spl-custom-cursor.spl-cursor-click *:not(input):not(textarea):not([contenteditable="true"]) { cursor: var(--spl-cursor-click) !important; }
 }
