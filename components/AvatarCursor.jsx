@@ -17,7 +17,7 @@ const svgUrl = (avatar, clicking) => {
     bob: rect(22, 7, 19, 5, hair) + rect(21, 10, 4, 18, hair) + rect(39, 10, 4, 18, hair),
     long: rect(22, 7, 19, 5, hair) + rect(21, 10, 4, 25, hair) + rect(39, 10, 4, 25, hair)
   }[a.hairstyle] || "";
-  const beard = a.facialHair === "none" ? "" : a.facialHair === "mustache" ? rect(29, 25, 7, 2, hair) : a.facialHair === "stubble" ? rect(25, 28, 2, 2, hair) + rect(37, 28, 2, 2, hair) : rect(25, 27, 14, 4, hair);
+  const beard = a.facialHair === "none" ? "" : a.facialHair === "mustache" ? rect(29, 25, 7, 2, hair) : a.facialHair === "stubble" ? rect(25, 28, 2, 2, hair) + rect(37, 28, 2, 2, hair) : rect(25, 27, 14, 4, hair) + rect(27, 23, 3, 1, hair) + rect(36, 23, 3, 1, hair);
   const longHair = ["bob", "long"].includes(a.hairstyle);
   const accent = clicking ? `${rect(4, 1, 2, 2, c.volt)}${rect(1, 5, 2, 2, "#f27bbd")}` : "";
   // Put the avatar below-right and the pointing hand above-left as in the supplied mock.

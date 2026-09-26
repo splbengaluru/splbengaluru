@@ -20,7 +20,7 @@ export default function PixelAvatar({ avatar = DEFAULT_AVATAR, size = 44 }) {
     {px(6,7,1,1,line)}{px(9,7,1,1,line)}{px(7,9,2,1,"#873b39")}
     {a.facialHair === "stubble" && <>{px(5,10,1,1,hair)}{px(10,10,1,1,hair)}</>}
     {a.facialHair === "mustache" && <>{px(6,9,1,1,hair)}{px(9,9,1,1,hair)}</>}
-    {a.facialHair === "beard" && <>{px(5,10,1,2,hair)}{px(10,10,1,2,hair)}{px(6,11,4,1,hair)}</>}
+    {a.facialHair === "beard" && <>{px(5,10,1,2,hair)}{px(10,10,1,2,hair)}{px(6,11,4,1,hair)}{px(6,9,1,1,hair)}{px(9,9,1,1,hair)}</>}
     {a.gender === "feminine" && <>{px(4,7,1,1,line)}{px(11,7,1,1,line)}</>}
     {px(0,0,16,1,line)}{px(0,15,16,1,line)}{px(0,0,1,16,line)}{px(15,0,1,16,line)}
   </svg>;
