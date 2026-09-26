@@ -8,8 +8,8 @@ export default function PixelAvatar({ avatar = DEFAULT_AVATAR, size = 44 }) {
   return <svg width={size} height={size} viewBox="0 0 16 16" aria-hidden="true" shapeRendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
     {px(0,0,16,16,"#f27bbd")}{px(1,1,14,14,"#d8f640")}
     {long && px(3,4,10,9,hair)}
-    {px(4,3,8,9,line)}{px(5,4,6,7,skin)}
-    {a.gender === "masculine" ? px(5,10,6,2,line) : null}
+    {px(4,3,8,9,line)}{px(5,4,6,8,skin)}
+    {a.gender === "masculine" ? <>{px(4,11,1,1,line)}{px(11,11,1,1,line)}</> : null}
     {px(3,12,10,4,line)}{px(4,12,8,4,shirt)}{px(7,11,2,2,neck)}
     {a.hairstyle === "buzz" && px(5,3,6,1,hair)}
     {a.hairstyle === "crop" && <>{px(4,2,8,3,hair)}{px(4,4,2,2,hair)}</>}
