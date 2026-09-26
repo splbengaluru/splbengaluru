@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import PixelAvatar from "@/components/PixelAvatar";
+import AvatarCursor from "@/components/AvatarCursor";
 import { AVATAR_OPTIONS, DEFAULT_AVATAR } from "@/lib/avatar";
 const LABELS = {
   gender: "Avatar shape", hairstyle: "Hairstyle", hairColor: "Hair color", skin: "Skin tone", outfit: "Dress color", facialHair: "Beard & mustache",
@@ -37,7 +38,7 @@ export default function PublicAuth() {
     const here = typeof window !== "undefined" ? window.location.pathname + (window.location.hash || "") : "/";
     return <div className="public-auth"><a href={"/api/auth/google?next=" + encodeURIComponent(here)}>Sign in with Google</a></div>;
   }
-  return <div className="public-auth profile-root" ref={root}>
+  return <><AvatarCursor avatar={avatar} /><div className="public-auth profile-root" ref={root}>
     <button className="profile-trigger" type="button" aria-label="Open profile menu" aria-haspopup="true" aria-expanded={open} onClick={() => { setOpen(v => !v); setEditing(false); }}><PixelAvatar avatar={avatar} size={35} /><span className="profile-chevron" aria-hidden="true">▾</span></button>
     {open && <div className="profile-panel" role="dialog" aria-label="Your profile">
       <div className="profile-head"><PixelAvatar avatar={avatar} size={48} /><div><strong>{user.name || "Your profile"}</strong><small title={user.email}>{user.email}</small></div></div>
@@ -48,5 +49,5 @@ export default function PublicAuth() {
       </div>}
       {message && <p className="profile-message" role="status">{message}</p>}
     </div>}
-  </div>;
+  </div></>;
 }
