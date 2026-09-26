@@ -20,7 +20,7 @@ const svgUrl = (avatar, clicking) => {
   const beard = a.facialHair === "none" ? "" : a.facialHair === "mustache" ? rect(29, 25, 7, 2, hair) : a.facialHair === "stubble" ? rect(25, 28, 2, 2, hair) + rect(37, 28, 2, 2, hair) : rect(25, 27, 14, 4, hair);
   const longHair = ["bob", "long"].includes(a.hairstyle);
   const accent = clicking ? `${rect(4, 13, 2, 2, c.volt)}${rect(1, 18, 2, 2, "#f27bbd")}` : "";
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="43" height="39" viewBox="0 0 43 39" shape-rendering="crispEdges"><image href="data:image/png;base64,${CURSOR_HAND}" x="1" y="18" width="21" height="20"/>${accent}${rect(21, 5, 22, 34, c.ink)}${rect(23, 10, 17, 21, skin)}${longHair ? rect(21, 9, 22, 25, hair) + rect(23, 10, 17, 21, skin) : ""}${hairstyle}${rect(26, 17, 3, 3, c.ink)}${rect(36, 17, 3, 3, c.ink)}${rect(31, 24, 5, 3, "#923f3d")}${beard}${rect(24, 32, 16, 6, shirt)}${rect(23, 30, 3, 2, "#333ab4")}${rect(40, 30, 3, 2, "#333ab4")}${rect(19, 31, 3, 2, skin)}</svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="43" height="39" viewBox="0 0 43 39" shape-rendering="crispEdges"><image href="data:image/png;base64,${CURSOR_HAND}" x="1" y="18" width="21" height="20"/>${accent}${rect(21, 10, 22, 29, c.ink)}${rect(23, 10, 17, 21, skin)}${longHair ? rect(21, 9, 22, 25, hair) + rect(23, 10, 17, 21, skin) : ""}${hairstyle}${rect(26, 17, 3, 3, c.ink)}${rect(36, 17, 3, 3, c.ink)}${rect(31, 24, 5, 3, "#923f3d")}${beard}${rect(24, 32, 16, 6, shirt)}${rect(23, 30, 3, 2, "#333ab4")}${rect(40, 30, 3, 2, "#333ab4")}${rect(19, 31, 3, 2, skin)}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 1 18, auto`;
 };
 export default function AvatarCursor({ avatar }) {
