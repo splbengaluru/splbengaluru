@@ -12,13 +12,14 @@ export default function RegisterPage() {
       type="audience"
       eyebrow="Tickets · Season 1 · 24 Oct 2026"
       title={<><span>Get your</span><span>ticket.</span></>}
-      sub="A full day of live pitches, quiz rounds and booths. You vote, you ask questions, and one of you wins a pitch slot."
+      sub="Meet the teams, watch the regional pitches and join the community around them. Registration is separate from buying a ticket."
       aside={
         <div className="ticket-mini">
-          <span className="tag">General · base ticket</span>
+          <span className="tag">Audience pass · General ticket</span>
+          <p className="fine">24 October 2026 · Bengaluru · Full day. Venue and doors TBA.</p>
           <div className="price"><small>₹</small>999</div>
           <span className="fine">₹799 applicant ticket unlocks after a valid pitch application and matching Google sign-in.</span>
-          <ul><li>Full day: pitches, quiz, booths</li><li>Live voting and Q&amp;A</li><li>Play the quiz for a pitch slot</li></ul>
+          <ul><li>Full day: pitches, quiz, booths</li><li>Audience participation and Q&amp;A; final rules TBA</li><li>Community quizzes; final rules TBA</li></ul>
           <p className="fine">Test checkout is available after registration. Razorpay test mode uses simulated payments; no real money moves. Live sales <span className="tba">TBA</span>.</p>
         </div>
       }

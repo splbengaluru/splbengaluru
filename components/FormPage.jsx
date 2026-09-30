@@ -25,12 +25,14 @@ export default function FormPage({ type, eyebrow, title, sub, sticker, aside, st
             {sticker && <div className="kn-sticker form-sticker">{sticker}</div>}
           </div>
           {sub && <p className="lede">{sub}</p>}
+          <a className="btn btn-accent form-jump" href="#registration">Continue to the form ↓</a>
         </div>
       </section>
       <section className="form-body">
-        <div className="wrap form-grid">
-          <div className="form-card">{type === "audience" && <TicketEligibility />}<BrandForm type={type} /></div>
-          {aside && <aside className="form-aside">{aside}</aside>}
+        <div className="wrap form-flow">
+          {aside && <aside className="pass-details" aria-label="Pass details before registration">{aside}</aside>}
+          <div className="form-card" id="registration"><span className="eyebrow">Your next step</span><h2 className="form-section-title">{type === "founder" ? "Your application" : type === "audience" ? "Your registration" : "Register your interest"}</h2>{type === "audience" && <TicketEligibility />}<BrandForm type={type} /></div>
+
         </div>
       </section>
       <SiteFooter />

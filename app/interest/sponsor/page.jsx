@@ -17,9 +17,10 @@ export default function SponsorInterestPage() {
       sub="If your customers are startup founders - payments, fintech infrastructure, hiring, CRM and sales tools, production partners - this is your room."
       aside={
         <div className="ticket-mini">
-          <span className="tag">What sponsors get</span>
-          <ul><li>Reach before, during and after the event</li><li>Startup booth or demo space</li><li>Stage acknowledgement, signage and tickets</li><li>Opt-in leads only, never scraped</li><li>A post-event report</li></ul>
-          <p className="fine">Packages and pricing <span className="tba">TBA</span></p>
+          <span className="tag">Builders, booths &amp; sponsors · Price TBA</span>
+          <p className="fine">24 October 2026 · Bengaluru · Full day. Tell us whether you want demo space, sponsorship or a custom partnership.</p>
+          <ul><li>Discuss reach before, during and after the event</li><li>Request startup booth or demo space</li><li>Stage acknowledgement, signage and tickets: package TBA</li><li>Opt-in leads only, never scraped</li><li>Post-event reporting: scope TBA</li></ul>
+          <p className="fine">Packages, available space and pricing <span className="tba">TBA</span>. Interest is not a confirmed booking. No jury seat, investment rights or attendee data access are included by default.</p>
         </div>
       }
     />

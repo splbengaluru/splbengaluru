@@ -3,7 +3,7 @@ import FormPage from "@/components/FormPage";
 export const metadata = {
   title: "Apply to pitch - Season 1 | Startup League Bengaluru",
   description: "Apply free to pitch at SPL Season 1 in Bengaluru. Idea plus a video link, pitch deck optional.",
-  openGraph: { title: "Apply to pitch - SPL Season 1", description: "Free to apply. 16 founders pitch live to VCs on 24 Oct 2026." },
+  openGraph: { title: "Apply to pitch - SPL Season 1", description: "Free to apply to the Bengaluru regional. One winner advances to the SWC semi-final." },
 };
 
 export default function ApplyPage() {
@@ -12,11 +12,13 @@ export default function ApplyPage() {
       type="founder"
       eyebrow="Round 1 · Free to apply"
       title={<><span>Apply to</span><span>pitch.</span></>}
-      sub="Your idea and a video link. Pitch deck optional. Up to 500 apply, 20 advance, 16 pitch live."
+      sub="The final SPL application route for the Bengaluru regional. Tell us what you are building and share a pitch video. A pitch deck is optional."
       aside={
         <div className="ticket-mini">
-          <span className="tag">How it works</span>
-          <ol className="steps"><li><b>Apply</b> Screened against a published rubric <span className="tba">rubric TBA</span></li><li><b>Round 2</b> Format <span className="tba">TBA</span>. 15 selected.</li><li><b>Pitch day</b> 6-minute pitch, then 4-minute judge Q&amp;A.</li><li><b>Result</b> 4-6 qualified judges select one winner.</li></ol>
+          <span className="tag">Founder track · Free to apply</span>
+          <div className="price">₹0</div>
+          <p className="fine">24 October 2026 · Bengaluru · Full day. Venue and application deadline TBA.</p>
+          <ol className="steps"><li><b>Apply</b> SPL screens applications. <a href="/#rubric">Read the proposed rubric →</a></li><li><b>Round 2</b> Shortlist size, selection dates and screening details <span className="tba">TBA</span>.</li><li><b>Pitch day</b> 6-minute pitch, then 4-minute judge Q&amp;A.</li><li><b>Result</b> 4-6 qualified judges select one winner for the San Francisco semi-final. The main-stage final is a further selection.</li></ol>
           <p className="fine">A valid application unlocks the ₹799 audience ticket after Google sign-in with the same email. Selected founders can unlock the ₹4,999 showcase pass after selection. Round 2 details <span className="tba">TBA</span>.</p>
         </div>
       }

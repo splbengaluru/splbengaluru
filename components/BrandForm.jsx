@@ -101,7 +101,7 @@ export default function BrandForm({ type }) {
       <div className="bf-done" role="status">
         <span className="bf-stamp">Done</span>
         <h3>You're in.</h3>
-        {state.registrationNumber && <p className="bf-number">Registration #{state.registrationNumber}{Number(state.registrationNumber) <= 200 ? " of 200" : ""}</p>}
+        {state.registrationNumber && <p className="bf-number">Registration #{state.registrationNumber}</p>}
         <p>{state.message}</p>
         {state.registrationNumber && <p className="bf-note">This is a registration number, not a paid ticket.</p>}
         {type === "audience" && state.registrationId && <TestCheckout registrationId={state.registrationId} email={identity.email} />}

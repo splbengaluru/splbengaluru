@@ -10,13 +10,13 @@ export default function SiteHeader({ active }) {
     <li><a href="/#event" data-nav="s1" aria-current={active === "s1" ? "page" : undefined}>Season 1</a></li>
     <li><a href="/#format">Format</a></li>
     <li><a href="/#tickets">Tickets</a></li>
-    <li><a href="/#sponsors">Sponsors</a></li>
+    <li><a href="/partners">Partners</a></li>
   </ul>
   <div className="nav-right">
   <a className="btn btn-accent btn-sm" href="/apply">Apply free</a>
   <PublicAuth /></div>
   
 </div>
-<nav className="mnav" aria-label="Sections"><a href="/" data-nav="home" aria-current={active === "home" ? "page" : undefined}>Home</a><a href="/#event" data-nav="s1" aria-current={active === "s1" ? "page" : undefined}>Season 1</a><a href="/#format">Format</a><a href="/#tickets">Tickets</a><a href="/#faq">FAQ</a><a href="/#sponsors">Sponsors</a></nav></header>
+<nav className="mnav" aria-label="Sections"><a href="/" data-nav="home" aria-current={active === "home" ? "page" : undefined}>Home</a><a href="/#event" data-nav="s1" aria-current={active === "s1" ? "page" : undefined}>Season 1</a><a href="/#format">Format</a><a href="/#tickets">Tickets</a><a href="/#faq">FAQ</a><a href="/partners">Partners</a></nav></header>
   );
 }
