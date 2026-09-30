@@ -12,10 +12,10 @@ const FONTS =
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://spl-bengaluru.vercel.app"),
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
-    apple: "/apple-touch-icon.png",
+    icon: [{ url: "/favicon.png?v=3", type: "image/png" }],
+    apple: "/apple-touch-icon.png?v=3",
   },
-  openGraph: { images: ["/og.png"] },
+  openGraph: { images: ["/og.png?v=3"] },
 };
 
 export const viewport = {
@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         <VisitTracker />
         {/* Page behaviour (reveal, countdown, touch grass, leaderboard) and the animated favicon */}
         <Script src="/assets/site.js?v=2" strategy="afterInteractive" />
-        <Script src="/assets/fav.js" strategy="afterInteractive" />
+        <Script src="/assets/fav.js?v=3" strategy="afterInteractive" />
       </body>
     </html>
   );

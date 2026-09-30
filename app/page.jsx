@@ -4,7 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 export const metadata = {
   title: "Startup League Bengaluru (SPL) - Serious opportunity, unserious hosts",
   description: "A fast, high-energy, day-long pitching event in Bengaluru. Founders pitch, VCs listen, the audience votes. Season 1: 24 Oct 2026.",
-  openGraph: { title: "Startup League Bengaluru (SPL) - Serious opportunity, unserious hosts", description: "A fast, high-energy, day-long pitching event in Bengaluru. Founders pitch, VCs listen, the audience votes. Season 1: 24 Oct 2026.", images: ["/og.png"] },
+  openGraph: { title: "Startup League Bengaluru (SPL) - Serious opportunity, unserious hosts", description: "A fast, high-energy, day-long pitching event in Bengaluru. Founders pitch, VCs listen, the audience votes. Season 1: 24 Oct 2026.", images: ["/og.png?v=3"] },
 };
 
 export default function HomePage() {
@@ -13,7 +13,7 @@ export default function HomePage() {
       <SiteHeader active="home" />
 
 <main>
-<section className="hero">
+<section className="hero" id="home">
   <div className="ghost-spl" aria-hidden="true">SPL</div>
   <span className="cross" style={{"left": "47%", "top": "34px"}}></span><span className="cross" style={{"right": "3%", "bottom": "44%"}}></span><span className="sq" style={{"background": "var(--pink)", "right": "6%", "top": "250px"}}></span><span className="sq" style={{"background": "var(--orange)", "left": "3.4%", "top": "52%"}}></span><span className="sq" style={{"background": "var(--volt)", "left": "62%", "top": "120px"}}></span>
   <img className="burst-img" src="/assets/burst.svg" alt="" aria-hidden="true" />
@@ -22,6 +22,7 @@ export default function HomePage() {
     <div className="title-wrap"><h1 className="hero-title"><span>Startup League</span></h1>
     <div className="kn-sticker" lang="kn">ಬೆಂಗಳೂರು</div></div>
     <button className="script tg" type="button" aria-label="Touch grass"><span className="tg-lawn tg-back" aria-hidden="true"></span><span className="tg-face"><span className="tg-label">touch grass</span></span><span className="tg-lawn tg-front" aria-hidden="true"></span><span className="tg-doodle" aria-hidden="true"><svg viewBox="0 0 190 140" fill="none"><text x="112" y="16" transform="rotate(-9 130 12)">click</text><path className="tg-arrow" d="M178 30 C150 20 116 22 94 38 C80 48 84 68 102 66 C120 64 120 42 100 40 C74 38 52 56 42 78 C34 96 32 114 33 130" /><path className="tg-head" d="M20 114 L33 131 L48 117" /></svg></span></button>
+    <div className="grass-leaderboard" id="leaderboard"><button className="lb-btn" type="button" aria-expanded="false" aria-controls="lb-panel"><img className="tro-i" src="/assets/trophy.png?v=2" alt="" width="310" height="287" />Top 10<span> touchers</span></button><div className="lb-panel" id="lb-panel" hidden><div className="lb-head"><b>Grass touch leaderboard</b><button className="lb-x" type="button" aria-label="Close">×</button></div><ol className="lb-list"><li className="lb-empty">Loading…</li></ol><form className="lb-form"><label htmlFor="lb-name">Your name on the board</label><div><input id="lb-name" maxLength="18" autoComplete="nickname" placeholder="e.g. grass_goblin" /><button type="submit">Save</button></div><p className="lb-me"></p></form></div></div>
     <p className="hero-sub">Serious opportunity.<br />Unserious hosts.</p>
     <p className="lede">Startup League Bengaluru (SPL) is a fast, high-energy, day-long pitching event. Founders get a real stage. VCs get curated deal flow. The audience gets to discover, vote and play - not just watch.</p>
     <div className="cta-row">
@@ -84,7 +85,7 @@ export default function HomePage() {
 <div className="ticker alt" aria-hidden="true"><div>NO SLIDES AFTER 10 MIN<i>/</i>COME WATCH 16 FOUNDERS SWEAT<i>/</i>BENGALURU BUILDS<i>/</i>EST 2026<i>/</i>NO SLIDES AFTER 10 MIN<i>/</i>COME WATCH 16 FOUNDERS SWEAT<i>/</i>BENGALURU BUILDS<i>/</i>EST 2026<i>/</i></div></div>
 
 <section id="season-1">
-  <div className="wrap">
+  <div className="wrap" id="event">
     <span className="eyebrow">Up next</span>
     <h2>Season 1. One day.</h2>
     <div className="event-card rv">
@@ -134,7 +135,7 @@ export default function HomePage() {
     <span className="eyebrow">Get involved</span>
     <h2>Help two dumb guys<br />host their first event.</h2>
     <p className="lede" style={{"margin": "0 auto"}}>Founder, investor, sponsor, creator or volunteer - there's a spot for you.</p>
-    <div className="cta-row"><a className="btn btn-accent" href="/apply">Apply to pitch</a><a className="btn btn-ghost" href="/interest/vc">VC interest</a><a className="btn btn-ghost" href="/interest/sponsor">Sponsor interest</a><a className="btn btn-ghost" href="/register">Get a ticket</a><a className="btn btn-ghost" href="https://wa.me/919945958602?text=Hi%2C+I%27d+like+to+enquire+about+SPL+Bengaluru." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a></div>
+    <div className="cta-row"><a className="btn btn-accent" href="/apply">Apply to pitch</a><a className="btn btn-ghost" href="/interest/vc">VC interest</a><a className="btn btn-ghost" href="/interest/sponsor">Sponsor interest</a><a className="btn btn-ghost" id="tickets" href="/register">Get a ticket</a><a className="btn btn-ghost" href="/go/whatsapp" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a></div>
   </div>
 <img className="sky-band" src="/assets/skyline-1200.webp" alt="" aria-hidden="true" loading="lazy" /></section>
 </main>

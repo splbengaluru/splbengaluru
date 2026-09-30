@@ -3,12 +3,12 @@ export default function SiteFooter() {
 <footer><div className="wrap">
   <div className="top">
     <div>
-      <a className="brand" href="/" aria-label="Startup League Bengaluru home"><span className="wm"><span className="lockup">SPL</span><img className="trophy" src="/assets/trophy.png?v=2" alt="" width="310" height="287" /><span className="city">BENGALURU</span></span></a>
+      <a className="brand" href="/" aria-label="Startup League Bengaluru home"><img className="spl-logo" src="/assets/spl-logo.jpg" alt="SPL Bengaluru" width="1400" height="846" /></a>
       <p className="muted" style={{"marginTop": "16px", "maxWidth": "320px", "fontSize": "14px"}}>Serious opportunity, unserious hosts. A live pitching event for Bengaluru founders, investors and the people who want to see them first.</p>
     </div>
     <div className="cols">
       <div><h4>Season 1</h4><ul><li><a href="/season-1#format">Format</a></li><li><a href="/season-1#tickets">Tickets</a></li><li><a href="/season-1#faq">FAQ</a></li><li><a href="/apply">Apply</a></li></ul></div>
-      <div><h4>Work with us</h4><ul><li><a href="/interest/sponsor">Sponsor &amp; booth interest</a></li><li><a href="/interest/vc">VC interest</a></li><li><a href="/apply">Apply to pitch</a></li><li><a href="/register">Audience registration</a></li><li><a href="https://wa.me/919945958602?text=Hi%2C+I%27d+like+to+enquire+about+SPL+Bengaluru." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a></li></ul></div>
+      <div><h4>Work with us</h4><ul><li><a href="/interest/sponsor">Sponsor &amp; booth interest</a></li><li><a href="/interest/vc">VC interest</a></li><li><a href="/apply">Apply to pitch</a></li><li><a href="/register">Audience registration</a></li><li><a href="/go/whatsapp" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a></li></ul></div>
       <div><h4>Follow</h4><ul><li>Instagram <span className="tba">link TBA</span></li><li>X <span className="tba">link TBA</span></li><li>LinkedIn <span className="tba">link TBA</span></li></ul></div>
     </div>
   </div>

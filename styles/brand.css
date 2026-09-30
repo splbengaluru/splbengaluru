@@ -362,3 +362,14 @@ footer .brand .wm .trophy{height:46px}
   html.spl-custom-cursor.spl-cursor-mid, html.spl-custom-cursor.spl-cursor-mid *:not(input):not(textarea):not([contenteditable="true"]) { cursor: var(--spl-cursor-mid) !important; }
   html.spl-custom-cursor.spl-cursor-click, html.spl-custom-cursor.spl-cursor-click *:not(input):not(textarea):not([contenteditable="true"]) { cursor: var(--spl-cursor-click) !important; }
 }
+
+/* Surgical logo, grass leaderboard and deep-link updates. */
+.spl-logo{display:block;object-fit:contain;height:auto;flex-shrink:0}
+.brand img.spl-logo{width:128px;height:auto;max-width:none}
+.nav .brand img.spl-logo{width:100px}
+footer .brand img.spl-logo{width:180px}
+.grass-leaderboard{position:absolute;right:2%;top:calc(clamp(210px,24vw,330px) + 165px);z-index:8}
+.grass-leaderboard .lb-panel{right:0;top:calc(100% + 12px)}
+[id]{scroll-margin-top:150px}
+@media(max-width:860px){.brand img.spl-logo{width:105px}.nav .brand img.spl-logo{width:92px}.grass-leaderboard{position:relative;top:auto;right:auto;width:max-content;margin:24px 0 20px auto}.grass-leaderboard .lb-btn span{display:inline}.grass-leaderboard .lb-panel{width:min(340px,calc(100vw - 40px))}.nav:not(.slim) .public-auth{flex-basis:auto;justify-content:flex-end}}
+@media(max-width:480px){.brand img.spl-logo{width:92px}}

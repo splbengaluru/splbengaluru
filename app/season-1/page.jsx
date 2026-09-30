@@ -140,7 +140,7 @@ export default function SeasonOnePage() {
     <div className="rv">
       <p className="lede" style={{"marginTop": "34px"}}>Startups and companies can buy a booth to demo their product, meet other founders and talk to the audience. Sponsors get reach before, during and after the event, with opt-in leads only.</p>
       <p className="note">Booth and sponsor pricing <span className="tba">TBA</span></p>
-      <div className="cta-row" style={{"marginTop": "24px"}}><a className="btn btn-accent" href="https://wa.me/919945958602?text=Hi%2C+I%27d+like+to+enquire+about+an+SPL+Bengaluru+booth." target="_blank" rel="noopener noreferrer">Enquire about a booth</a></div>
+      <div className="cta-row" style={{"marginTop": "24px"}}><a className="btn btn-accent" href="/go/whatsapp?topic=booth" target="_blank" rel="noopener noreferrer">Enquire about a booth</a></div>
     </div>
   </div>
 </section>

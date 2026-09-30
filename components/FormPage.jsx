@@ -11,7 +11,7 @@ export default function FormPage({ type, eyebrow, title, sub, sticker, aside, st
     <>
       {standalone ? (
         <header className="nav slim"><div className="wrap">
-          <a className="brand" href="/" aria-label="Startup League Bengaluru home"><span className="wm"><span className="lockup">SPL</span><img className="trophy" src="/assets/trophy.png?v=2" alt="" width="310" height="287" /><span className="city">BENGALURU</span></span></a>
+          <a className="brand" href="/" aria-label="Startup League Bengaluru home"><img className="spl-logo" src="/assets/spl-logo.jpg" alt="SPL Bengaluru" width="1400" height="846" /></a>
           <PublicAuth /><a className="slim-link" href="/season-1">Season 1 · 24 Oct 2026 →</a>
         </div></header>
       ) : (
