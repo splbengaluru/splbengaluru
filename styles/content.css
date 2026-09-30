@@ -16,3 +16,7 @@ body{overflow-x:clip}html{scroll-padding-top:150px}
 /* One anchor offset, not compounded scroll padding plus section margins. */
 html{scroll-padding-top:0}main section,main section [id]{scroll-margin-top:150px}
 @media(min-width:861px){main section,main section [id]{scroll-margin-top:90px}}
+
+.person-photo{display:block;width:120px;height:120px;object-fit:cover;border-radius:50%;border:2px solid var(--ink);margin-bottom:24px}.person-placeholder{display:grid;place-items:center;background:var(--volt);font:12px var(--font-mono)}.person-card .person-title{font-weight:700;color:#c4d3ff;font-size:14px;line-height:1.5}.person-card .text-link{display:inline-block;margin-top:20px}.person-card h3{overflow-wrap:normal}
+
+.host-grid .card .k{color:var(--volt)}.sxp-brand{display:flex;align-items:center;background:#fff;padding:18px;width:fit-content;max-width:100%;border:2px solid var(--ink);margin:18px 0}.sxp-brand img{display:block;width:275px;max-width:100%;height:auto}.host-brand-pair{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-bottom:24px}.host-brand-pair>span{font:32px var(--font-display);color:var(--volt)}.host-brand-pair>b{font-size:24px}.host-brand-pair .sxp-brand{margin:0}
