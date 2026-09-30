@@ -373,3 +373,7 @@ footer .brand img.spl-logo{width:180px}
 [id]{scroll-margin-top:150px}
 @media(max-width:860px){.brand img.spl-logo{width:105px}.nav .brand img.spl-logo{width:92px}.grass-leaderboard{position:relative;top:auto;right:auto;width:max-content;margin:24px 0 20px auto}.grass-leaderboard .lb-btn span{display:inline}.grass-leaderboard .lb-panel{width:min(340px,calc(100vw - 40px))}.nav:not(.slim) .public-auth{flex-basis:auto;justify-content:flex-end}}
 @media(max-width:480px){.brand img.spl-logo{width:92px}}
+/* Stable single homepage anchor offset and angled-strip containment. */
+html{overflow-x:hidden;scroll-padding-top:0}body{overflow-x:hidden}
+main section,main section [id]{scroll-margin-top:150px}
+@media(min-width:861px){main section,main section [id]{scroll-margin-top:90px}}

@@ -16,7 +16,7 @@ export default function ApplyPage() {
       aside={
         <div className="ticket-mini">
           <span className="tag">How it works</span>
-          <ol className="steps"><li><b>Apply</b> Screened against a published rubric <span className="tba">rubric TBA</span></li><li><b>Round 2</b> Format <span className="tba">TBA</span>. 15 selected.</li><li><b>Pitch day</b> 5-minute pitch, then Q&amp;A.</li><li><b>Result</b> 5 VC judges pick the top 3.</li></ol>
+          <ol className="steps"><li><b>Apply</b> Screened against a published rubric <span className="tba">rubric TBA</span></li><li><b>Round 2</b> Format <span className="tba">TBA</span>. 15 selected.</li><li><b>Pitch day</b> 6-minute pitch, then 4-minute judge Q&amp;A.</li><li><b>Result</b> 4-6 qualified judges select one winner.</li></ol>
           <p className="fine">A valid application unlocks the ₹799 audience ticket after Google sign-in with the same email. Selected founders can unlock the ₹4,999 showcase pass after selection. Round 2 details <span className="tba">TBA</span>.</p>
         </div>
       }
