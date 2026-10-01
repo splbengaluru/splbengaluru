@@ -377,22 +377,18 @@ footer .brand img.spl-logo{width:180px}
 html{overflow-x:hidden;scroll-padding-top:0}body{overflow-x:hidden}
 main section,main section [id]{scroll-margin-top:150px}
 @media(min-width:861px){main section,main section [id]{scroll-margin-top:90px}}
-/* Ticket A: split at the green stub, clear the preview, reveal existing prices. */
-.ticket-envelope .ticket-model{overflow:visible;border:0;cursor:pointer;box-shadow:none}
+/* Reversible ticket scroll, driven directly by page position. */
+.ticket-scroll-runway{height:calc(820px + 1400px);position:relative}
+.ticket-pin{position:sticky;top:100px;height:820px}
+.ticket-envelope{position:relative;height:100%}
+.ticket-envelope .ticket-stage{position:absolute;inset:0 0 auto;max-width:940px;width:100%;margin:0 auto;padding-top:40px;opacity:calc(1 - var(--clear));transform:translateX(calc(-140px * var(--clear)));pointer-events:none}
+.ticket-envelope .ticket-model{animation:none;overflow:visible;border:0;box-shadow:none;transform:rotateZ(-4deg);transition:none}
 .ticket-envelope .ticket-face{border:2px solid var(--ink);border-right:0;border-radius:20px 0 0 20px;box-shadow:14px 18px 0 var(--league-blue)}
-.ticket-envelope .ticket-stub{border:2px solid var(--ink);border-left-style:dashed;border-radius:0 20px 20px 0;box-shadow:14px 18px 0 var(--league-blue);transition:transform .7s,opacity .55s .1s}
-.ticket-envelope .ticket-model:focus-visible{outline:3px solid var(--pink);outline-offset:12px}
-.ticket-envelope .ticket-stage{max-height:640px;transition:max-height .8s .4s,padding .8s .4s,margin .8s .4s}
-.ticket-envelope.is-open .ticket-stub{transform:translateX(150px);opacity:0}
-.ticket-envelope.is-open .ticket-model{animation:none;transform:translateX(-140px) rotateZ(-4deg);opacity:0;transition:transform .75s,opacity .6s .15s;pointer-events:none}
-.ticket-envelope.is-open .ticket-stage{max-height:0;padding:0;margin:0;overflow:hidden}
-.ticket-envelope.is-open .ticket-stage-caption{opacity:0}
-.ticket-emergence{max-height:0;visibility:hidden;opacity:0;overflow:hidden;transition:max-height 1.15s .35s,opacity .45s .35s}
-.ticket-emergence>.tickets{margin-top:32px;padding:0 10px 10px 0}
-.ticket-emergence .ticket{transform:translateY(-80px) scale(.9);opacity:0;transform-origin:top center;transition:transform .9s cubic-bezier(.18,.8,.25,1),opacity .5s;transition-delay:calc(.4s + var(--ticket-order,0)*.12s)}
+.ticket-envelope .ticket-stub{border:2px solid var(--ink);border-left-style:dashed;border-radius:0 20px 20px 0;box-shadow:14px 18px 0 var(--league-blue);transform:translateX(calc(180px * var(--split)));opacity:calc(1 - var(--split));transition:none}
+.ticket-emergence{position:absolute;top:0;left:0;right:0;opacity:var(--cards);transform:translateY(calc(120px * (1 - var(--cards))));transition:none}
+.ticket-emergence>.tickets{margin-top:28px;padding:0 10px 10px 0}
+.ticket-emergence .ticket{transform:translateY(calc((1 - var(--cards)) * (80px + var(--ticket-order,0)*35px)));transition:none}
 .ticket-emergence .ticket:nth-child(2){--ticket-order:1}.ticket-emergence .ticket:nth-child(3){--ticket-order:2}.ticket-emergence .ticket:nth-child(4){--ticket-order:3}
-.is-open .ticket-emergence{max-height:4000px;visibility:visible;opacity:1;overflow:visible}
-.is-open .ticket-emergence .ticket{transform:none;opacity:1}
-@media(max-width:760px){.ticket-envelope .ticket-face,.ticket-envelope .ticket-stub{box-shadow:6px 8px 0 var(--league-blue)}}
-@media(prefers-reduced-motion:reduce){.ticket-envelope .ticket-model,.ticket-envelope .ticket-stub,.ticket-envelope .ticket-stage,.ticket-emergence,.ticket-emergence .ticket{transition:none;animation:none}}
+@media(max-width:900px){.ticket-scroll-runway{height:calc(var(--panel-height,2800px) + 1000px)}.ticket-pin{top:145px;height:var(--panel-height,2800px)}.ticket-envelope .ticket-stage{padding-top:20px}.ticket-envelope .ticket-face,.ticket-envelope .ticket-stub{box-shadow:6px 8px 0 var(--league-blue)}.ticket-envelope .ticket-stage{transform:translateX(calc(-80px * var(--clear)))}}
+@media(prefers-reduced-motion:reduce){.ticket-scroll-runway{height:auto;padding:0}.ticket-pin{position:static;height:auto}.ticket-envelope{height:auto}.ticket-envelope .ticket-stage{display:none}.ticket-emergence{position:relative;opacity:1;transform:none}.ticket-emergence .ticket{transform:none}}
 @media(min-width:1000px){#investors .cards{grid-template-columns:repeat(4,minmax(0,1fr))}#investors .card{padding:26px 22px}}
