@@ -61,7 +61,7 @@ export default function AdminDashboard() {
         <label>Email<input type="email" required autoComplete="username" value={credentials.email} onChange={e => setCredentials({ ...credentials, email: e.target.value })} /></label>
         <label>Password<input type="password" required autoComplete="current-password" value={credentials.password} onChange={e => setCredentials({ ...credentials, password: e.target.value })} /></label>
         <button type="submit" disabled={loading}>{loading ? "Checking..." : "Sign in →"}</button>
-      </form>{googleEnabled && <><p className="admin-or">or</p><a className="admin-google" href="/api/auth/google?next=/admin">Sign in with Google →</a></>}{error && <p className="admin-error" role="alert">{error}</p>}</section> : <div className="admin-content">
+      </form>{googleEnabled && <><p className="admin-or">or</p><a className="admin-google" href="/api/auth/google?next=/admin">Sign in →</a></>}{error && <p className="admin-error" role="alert">{error}</p>}</section> : <div className="admin-content">
       <div className="admin-title"><div><p className="admin-kicker">Private / {data.admin}</p><h1>Control room.</h1></div><button type="button" onClick={() => load()} disabled={loading}>Refresh ↻</button></div>
       <p className="admin-explain">Live activity refreshes every 30 seconds while this tab is open. Active means a browser seen in the last two minutes; only signed-in browsers show an account. Counts start when tracking is connected; ad blockers and disabled JavaScript can undercount.</p>
       {error && <p className="admin-error" role="alert">{error}</p>}

@@ -19,7 +19,7 @@ export default function VcInterestPage() {
         <div className="ticket-mini">
           <span className="tag">Investor track · Price TBA</span>
           <p className="fine">24 October 2026 · Bengaluru · Full day. Registering interest does not reserve a jury seat.</p>
-          <ul><li>Screened startup shortlist; size and delivery TBA</li><li>Investor briefing format and timing TBA</li><li>Investor participation and seating details TBA</li><li>Intros only when both sides opt in</li></ul>
+          <ul><li>Hand-picked startup deal flow; shortlist and delivery TBA</li><li>Help identify teams to represent India at Startup World Cup</li><li>VC passes, ID cards and networking booths planned; details and price TBA</li><li>Intros only when both sides opt in</li></ul>
           <p className="fine">VC track pricing <span className="tba">TBA</span>. Serious opportunity, unserious hosts: the jokes are on us, never the founders.</p>
         </div>
       }

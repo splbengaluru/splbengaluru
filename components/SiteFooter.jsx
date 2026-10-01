@@ -4,7 +4,7 @@ export default function SiteFooter() {
   <div className="top">
     <div>
       <a className="brand" href="/" aria-label="Startup League Bengaluru home"><img className="spl-logo" src="/assets/spl-logo.jpg" alt="SPL Bengaluru" width="1400" height="846" /></a>
-      <p className="muted" style={{"marginTop": "16px", "maxWidth": "320px", "fontSize": "14px"}}>Hosted by SPL × SourcingXPress. Official Startup World Cup Bengaluru regional. One winner, a global next step.</p>
+      <p className="muted" style={{"marginTop": "16px", "maxWidth": "320px", "fontSize": "14px"}}>By Startup League Bengaluru. Official Startup World Cup Bengaluru regional. Top three to the USA event.</p>
     </div>
     <div className="cols">
       <div><h4>Season 1</h4><ul><li><a href="/#format">Format</a></li><li><a href="/#tickets">Tickets</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/apply">Apply</a></li></ul></div>

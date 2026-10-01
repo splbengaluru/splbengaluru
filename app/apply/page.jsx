@@ -3,7 +3,7 @@ import FormPage from "@/components/FormPage";
 export const metadata = {
   title: "Apply to pitch - Season 1 | Startup League Bengaluru",
   description: "Apply free to pitch at SPL Season 1 in Bengaluru. Idea plus a video link, pitch deck optional.",
-  openGraph: { title: "Apply to pitch - SPL Season 1", description: "Free to apply to the Bengaluru regional. One winner advances to the SWC semi-final." },
+  openGraph: { title: "Apply to pitch - SPL Season 1", description: "Free to apply to the Bengaluru regional. Top three startups go to the USA event." },
 };
 
 export default function ApplyPage() {
@@ -18,8 +18,8 @@ export default function ApplyPage() {
           <span className="tag">Founder track · Free to apply</span>
           <div className="price">₹0</div>
           <p className="fine">24 October 2026 · Bengaluru · Full day. Venue and application deadline TBA.</p>
-          <ol className="steps"><li><b>Apply</b> SPL screens applications. <a href="/#rubric">Read the proposed rubric →</a></li><li><b>Round 2</b> Shortlist size, selection dates and screening details <span className="tba">TBA</span>.</li><li><b>Pitch day</b> 6-minute pitch, then 4-minute judge Q&amp;A.</li><li><b>Result</b> 4-6 qualified judges select one winner for the San Francisco semi-final. The main-stage final is a further selection.</li></ol>
-          <p className="fine">A valid application unlocks the ₹799 audience ticket after Google sign-in with the same email. Selected founders can unlock the ₹4,999 showcase pass after selection. Round 2 details <span className="tba">TBA</span>.</p>
+          <ol className="steps"><li><b>Apply</b> SPL screens applications. <a href="/#rubric">Read the judging direction →</a></li><li><b>Round 2</b> Planned shortlist: 15 startups. Selection dates and screening details <span className="tba">TBA</span>.</li><li><b>Pitch day</b> Present to the jury and a VC audience. Final timings TBA.</li><li><b>Result</b> Top three startups go to the USA event. Travel, participation arrangements and top-ten future-cup eligibility conditions TBA.</li></ol>
+          <p className="fine">A valid application unlocks the ₹799 audience ticket after sign-in with the same email. Selected founders can unlock the ₹4,999 showcase pass after selection. Round 2 details <span className="tba">TBA</span>.</p>
         </div>
       }
     />
