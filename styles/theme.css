@@ -1,0 +1,15 @@
+/* SPL.BLR theme - Brand Guide v2 (24 Sep 2026). Flat colour only, no gradients. */
+:root{
+  --league-blue:#2E4BFF; --shadow-blue:#16278F; --volt:#D9FF3D; --orange:#FF5A1F;
+  --pink:#F23E7B; --ink:#0A0D11; --offwhite:#F8F6F1;
+  --bg:var(--offwhite); --surface:#FFFFFF; --text:var(--ink); --muted:#4B5260;
+  --accent:var(--volt); --accent-ink:var(--ink); --live:var(--orange);
+  --font-display:"Archivo Black","Inter",sans-serif;
+  --font-hero:"Playfair Display",Georgia,serif;
+  --font-body:"Inter",system-ui,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --font-lockup:"Shrikhand",cursive;
+  --font-kn:"Noto Sans Kannada",sans-serif;
+  --radius-md:0px; --radius-lg:0px;
+  --heading-transform:uppercase;
+}
