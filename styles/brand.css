@@ -19,7 +19,7 @@ footer .lockup{font-size:34px}
 .btn-ghost{background:var(--offwhite);color:var(--ink);border-color:var(--ink)}
 .nav .btn{box-shadow:4px 4px 0 var(--pink);border-color:var(--volt)}
 /* HERO: League Blue field */
-.hero{background:var(--league-blue);color:var(--offwhite);padding:80px 0 0;overflow:hidden}
+.hero{background:var(--league-blue);color:var(--offwhite);padding:40px 0 0;overflow:hidden}
 .hero .grid-bg,.hero .glow{display:none}
 .hero .eyebrow{color:var(--volt)}
 .hero-title{font-family:var(--font-hero);font-weight:900;text-transform:uppercase;color:var(--volt);line-height:.82;letter-spacing:-.01em;
@@ -174,7 +174,7 @@ footer .brand .wm .lockup{font-size:40px}
   .mnav a{flex:0 0 auto;font-family:var(--font-mono);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#C9CED8;border:1.5px solid rgba(248,246,241,.28);padding:7px 11px}
   .mnav a[aria-current]{color:var(--ink);background:var(--volt);border-color:var(--volt)}
   /* hero */
-  .hero{padding-top:40px}
+  .hero{padding-top:24px}
   .hero .eyebrow{font-size:11px;letter-spacing:.1em;line-height:1.5}
   .hero-title{white-space:normal;font-size:31vw;line-height:.8;margin-top:22px;text-shadow:7px 7px 0 var(--shadow-blue)}
   .hero-title span{display:block}
@@ -260,7 +260,7 @@ footer .brand .wm .lockup{font-size:40px}
 /* BTW-style engraving details: dot grid + registration crosshairs */
 .hero::before,.hero::after{content:"";position:absolute;pointer-events:none;z-index:0}
 .hero::before{top:92px;right:4%;width:220px;height:120px;background-image:radial-gradient(var(--shadow-blue) 1.6px,transparent 1.8px);background-size:14px 14px;opacity:.9}
-.hero::after{left:2.4%;top:40px;bottom:0;width:1px;background:linear-gradient(var(--shadow-blue),var(--shadow-blue)) ;box-shadow:0 0 0 0 transparent}
+.hero::after{display:none}
 .cross{position:absolute;width:22px;height:22px;z-index:1;pointer-events:none}
 .cross::before,.cross::after{content:"";position:absolute;background:var(--volt)}
 .cross::before{left:10px;top:0;width:2px;height:22px}.cross::after{top:10px;left:0;height:2px;width:22px}
