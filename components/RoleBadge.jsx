@@ -12,6 +12,6 @@ export default function RoleBadge({rotation,image,alt,title,description,href}) {
     <button className="badge-front" type="button" aria-expanded={open} aria-controls={id} aria-label={`${alt}. Flip for details`} onClick={()=>setOpen(true)}>
       <img src={image} alt={alt} loading="lazy"/><span>Flip / tap for details</span>
     </button>
-    <div className="badge-back" id={id}><b>{title}</b><p>{description}</p><a className="btn btn-ghost btn-sm" href={href}>View more details →</a><button type="button" className="badge-reset" onClick={e=>{setOpen(false);e.currentTarget.blur()}}>Show badge ↩</button></div>
+    <div className="badge-back" id={id}><b>{title}</b><p>{description}</p><a className="btn btn-accent btn-sm" href={href}>View more details →</a><button type="button" className="badge-reset" onClick={e=>{setOpen(false);e.currentTarget.blur()}}>Show badge ↩</button></div>
   </div>;
 }

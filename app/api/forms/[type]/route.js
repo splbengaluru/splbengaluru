@@ -32,7 +32,7 @@ export async function GET(req, { params }) {
   if (!identity) return json({ signedIn: false, submitted: false });
   try {
     const existing = await priorSubmission(form, identity);
-    return json({ signedIn: true, name: identity.name, email: identity.email, submitted: !!existing,
+    return json({ signedIn: true, email: identity.email, submitted: !!existing,
       ...(type === "audience" && existing?.auth_user_id === identity.id ? { registrationId: existing.id, registrationNumber: existing.registration_number, testTicketNumber: existing.test_ticket_number } : {}) });
   }
   catch { return json({ error: "Couldn't check your form status. Try again." }, 503); }
@@ -44,13 +44,12 @@ export async function POST(req, { params }) {
   if (!form) return json({ error: "Unknown form" }, 404);
   const identity = await publicIdentity();
   if (!identity) return json({ error: "Sign in with Google to submit this form." }, 401);
-  if (!identity.name) return json({ error: "Your Google account didn't provide a name. Check your Google profile and sign in again." }, 422);
   let body = {};
   try { body = await req.json(); } catch {}
   if (body && body.company_fax) return json({ error: "Invalid request" }, 400);
   const ip = String(req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "x";
   if (await rateLimited(ip)) return json({ error: "Too many tries. Give it a few minutes." }, 429);
-  const { data, errors } = validate(type, { ...body, full_name: identity.name, email: identity.email });
+  const { data, errors } = validate(type, { ...body, email: identity.email });
   if (errors) return json({ error: "Fix the highlighted fields", errors }, 400);
   if (!storeConfigured()) return json({ error: "Forms open very soon. The database isn't connected yet." }, 503);
   try {
