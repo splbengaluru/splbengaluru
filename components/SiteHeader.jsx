@@ -4,7 +4,7 @@ import PublicAuth from "@/components/PublicAuth";
 export default function SiteHeader({ active }) {
   return (
 <header className="nav"><div className="wrap">
-  <a className="brand" href="/" aria-label="Startup League Bengaluru home"><img className="spl-logo" src="/assets/spl-logo.jpg" alt="SPL Bengaluru" width="1400" height="846" /></a>
+  <a className="brand" href="/" aria-label="Startup League Bengaluru home"><img className="spl-logo" src="/assets/spl-logo.jpg" alt="SPL Bengaluru" width="1400" height="846" style={{ width: 100, height: "auto", maxWidth: "100%" }} /></a>
   <ul>
     <li><a href="/#what" data-nav="home" aria-current={active === "home" ? "page" : undefined}>What is SPL</a></li>
     <li><a href="/#event" data-nav="s1" aria-current={active === "s1" ? "page" : undefined}>Season 1</a></li>

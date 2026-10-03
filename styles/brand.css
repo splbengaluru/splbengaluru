@@ -29,6 +29,8 @@ footer .lockup{font-size:34px}
 .hero .lede{color:#E4E8FF}
 .hero .btn-ghost{background:transparent;color:var(--offwhite);border-color:var(--offwhite);box-shadow:5px 5px 0 var(--shadow-blue)}
 .hero .btn-accent{box-shadow:5px 5px 0 var(--shadow-blue)}
+.cal-hero-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:rgba(0,0,0,0.35);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.4);color:var(--offwhite);box-shadow:3px 3px 0 var(--shadow-blue);font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border-radius:0;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.cal-hero-btn:hover{transform:translate(-2px,-2px);background:rgba(0,0,0,0.55);border-color:var(--volt);color:#fff;box-shadow:5px 5px 0 var(--shadow-blue)}
 .hero .stats{border-top:2px solid rgba(248,246,241,.35)}
 .hero .stat b{font-family:var(--font-display);color:var(--volt)}
 .hero .stat span{color:#E4E8FF}
@@ -74,11 +76,33 @@ h2 .hl{color:var(--league-blue)}
 .row.lead{background:var(--volt)}
 .row.lead p{color:var(--ink)}
 .row.lead .num,.row.lead .pos{color:var(--ink)}
-/* tickets */
-.ticket{border:2px solid var(--offwhite);border-radius:0;background:#161B24;box-shadow:8px 8px 0 var(--league-blue)}
-.ticket.feat{background:var(--volt);border-color:var(--volt);box-shadow:8px 8px 0 var(--pink)}
-.ticket .price{font-family:var(--font-display)}
-.ticket .perf{border-top-style:dashed}
+/* tickets: coordinated dark palette with deliberate hierarchy */
+.ticket{border:2px solid rgba(248,246,241,.25);border-radius:0;background:#151A24;color:var(--offwhite);box-shadow:8px 8px 0 var(--shadow-blue, #0d1a44);display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease}
+.ticket .tag{color:#AEB5C2;font-family:var(--font-mono);font-weight:700;letter-spacing:.12em}
+.ticket .price{font-family:var(--font-display);color:#FFFFFF}
+.ticket .fine{color:#AEB5C2}
+.ticket ul{border-top:2px dashed rgba(248,246,241,.15);margin:16px 0 24px;padding:0}
+.ticket li{color:#D5DCEB;border-top:1px solid rgba(248,246,241,.1);padding:10px 0;font-size:14px;line-height:1.45}
+.ticket li:first-child{border-top:0}
+.ticket .perf{border-top:2px dashed rgba(248,246,241,.18)}
+.ticket .btn{justify-content:center;text-align:center;width:100%}
+
+/* Featured card: Verified Applicants (₹799 founder rate) */
+.ticket.feat{background:#182030;border:2px solid var(--volt);color:var(--offwhite);box-shadow:8px 8px 0 var(--league-blue)}
+.ticket.feat .tag{color:var(--volt);font-weight:700}
+.ticket.feat .price{color:#FFFFFF}
+.ticket.feat .fine{color:#CAD4E8}
+.ticket.feat ul{border-top-color:rgba(217,255,61,.25)}
+.ticket.feat li{color:#F8F6F1;border-top-color:rgba(217,255,61,.12)}
+.ticket.feat .perf{border-top-color:rgba(217,255,61,.25)}
+.ticket.feat .btn{background:var(--volt);color:var(--ink);border:2px solid var(--volt);box-shadow:4px 4px 0 var(--shadow-blue);font-weight:700}
+.ticket.feat .btn:hover{background:#FFFFFF;border-color:#FFFFFF;color:var(--ink);box-shadow:6px 6px 0 var(--shadow-blue);transform:translate(-2px,-2px)}
+
+/* Showcase pass: Selected Finalists (locked) */
+.ticket.showcase-card{border:2px solid rgba(255,75,146,.4);box-shadow:8px 8px 0 rgba(255,75,146,.25);background:#131720}
+.ticket.showcase-card .tag{color:var(--pink)}
+.ticket.showcase-card .perf{border-top-color:rgba(255,75,146,.25)}
+.ticket.showcase-card li{color:#D5DCEB}
 /* event card */
 .event-card{border:2px solid var(--ink);border-radius:0;box-shadow:10px 10px 0 var(--ink)}
 .event-card .l{background:#fff}
@@ -378,17 +402,18 @@ html{overflow-x:hidden;scroll-padding-top:0}body{overflow-x:hidden}
 main section,main section [id]{scroll-margin-top:150px}
 @media(min-width:861px){main section,main section [id]{scroll-margin-top:90px}}
 /* Reversible ticket scroll, driven directly by page position. */
-.ticket-scroll-runway{height:calc(820px + 1400px);position:relative}
-.ticket-pin{position:sticky;top:100px;height:820px}
+.ticket-scroll-runway{height:calc(860px + 1400px);position:relative}
+.ticket-pin{position:sticky;top:135px;height:860px}
 .ticket-envelope{position:relative;height:100%}
-.ticket-envelope .ticket-stage{position:absolute;inset:0 0 auto;max-width:940px;width:100%;margin:0 auto;padding-top:40px;opacity:calc(1 - var(--clear));transform:translateX(calc(-140px * var(--clear)));pointer-events:none}
+.ticket-envelope .ticket-stage{position:absolute;inset:0 0 auto;max-width:820px;width:100%;margin:0 auto;padding-top:65px;opacity:calc(1 - var(--clear));transform:translateX(calc(-120px * var(--clear)));pointer-events:none}
 .ticket-envelope .ticket-model{animation:none;overflow:visible;border:0;box-shadow:none;transform:rotateZ(-4deg);transition:none}
-.ticket-envelope .ticket-face{border:2px solid var(--ink);border-right:0;border-radius:20px 0 0 20px;box-shadow:14px 18px 0 var(--league-blue)}
-.ticket-envelope .ticket-stub{border:2px solid var(--ink);border-left-style:dashed;border-radius:0 20px 20px 0;box-shadow:14px 18px 0 var(--league-blue);transform:translateX(calc(180px * var(--split)));opacity:calc(1 - var(--split));transition:none}
+.ticket-envelope .ticket-face{border:2px solid var(--ink);border-right:0;border-radius:18px 0 0 18px;box-shadow:12px 16px 0 var(--league-blue)}
+.ticket-envelope .ticket-stub{border:2px solid var(--ink);border-left-style:dashed;border-radius:0 18px 18px 0;box-shadow:12px 16px 0 var(--league-blue);transform:translateX(calc(150px * var(--split)));opacity:calc(1 - var(--split));transition:none}
+.ticket-envelope .ticket-stage-caption{margin-top:92px;position:relative;z-index:2}
 .ticket-emergence{position:absolute;top:0;left:0;right:0;opacity:var(--cards);transform:translateY(calc(120px * (1 - var(--cards))));transition:none}
 .ticket-emergence>.tickets{margin-top:28px;padding:0 10px 10px 0}
 .ticket-emergence .ticket{transform:translateY(calc((1 - var(--cards)) * (80px + var(--ticket-order,0)*35px)));transition:none}
 .ticket-emergence .ticket:nth-child(2){--ticket-order:1}.ticket-emergence .ticket:nth-child(3){--ticket-order:2}.ticket-emergence .ticket:nth-child(4){--ticket-order:3}
-@media(max-width:900px){.ticket-scroll-runway{height:calc(var(--panel-height,2800px) + 1000px)}.ticket-pin{top:145px;height:var(--panel-height,2800px)}.ticket-envelope .ticket-stage{padding-top:20px}.ticket-envelope .ticket-face,.ticket-envelope .ticket-stub{box-shadow:6px 8px 0 var(--league-blue)}.ticket-envelope .ticket-stage{transform:translateX(calc(-80px * var(--clear)))}}
+@media(max-width:900px){.ticket-scroll-runway{height:calc(var(--panel-height,2800px) + 1000px)}.ticket-pin{top:125px;height:var(--panel-height,2800px)}.ticket-envelope .ticket-stage{padding-top:30px;max-width:100%}.ticket-envelope .ticket-face,.ticket-envelope .ticket-stub{box-shadow:6px 8px 0 var(--league-blue)}.ticket-envelope .ticket-stage{transform:translateX(calc(-80px * var(--clear)))}.ticket-envelope .ticket-stage-caption{margin-top:52px}}
 @media(prefers-reduced-motion:reduce){.ticket-scroll-runway{height:auto;padding:0}.ticket-pin{position:static;height:auto}.ticket-envelope{height:auto}.ticket-envelope .ticket-stage{display:none}.ticket-emergence{position:relative;opacity:1;transform:none}.ticket-emergence .ticket{transform:none}}
 @media(min-width:1000px){#investors .cards{grid-template-columns:repeat(4,minmax(0,1fr))}#investors .card{padding:26px 22px}}
