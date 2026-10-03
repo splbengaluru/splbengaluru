@@ -2,12 +2,13 @@
 .nav.slim .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .slim-link{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--volt);white-space:nowrap}
 .slim-link:hover{color:var(--offwhite)}
-.form-hero{padding:64px 0 72px;position:relative}
+.form-hero{padding:64px 0 72px;position:relative;background:var(--league-blue);color:var(--offwhite)}
+.form-hero .eyebrow{color:var(--volt)}
 .form-title-wrap{position:relative;display:block;width:fit-content;max-width:100%}
 .form-title{font-family:var(--font-hero);font-weight:900;text-transform:uppercase;color:var(--volt);line-height:.86;letter-spacing:-.01em;font-size:clamp(54px,9vw,128px);margin-top:22px;text-shadow:6px 6px 0 var(--shadow-blue)}
 .form-title span{display:block}
 .form-hero .form-sticker{position:absolute;right:-18px;top:-6px;font-family:var(--font-display);font-size:clamp(20px,2.6vw,34px);transform:rotate(8deg);text-transform:uppercase}
-.form-hero .lede{max-width:640px;margin-top:22px}
+.form-hero .lede{max-width:680px;margin-top:22px;color:#E4E8FF;font-size:18px;line-height:1.55}
 .form-body{padding:64px 0 96px;background:var(--offwhite)}
 .form-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;align-items:start}
 .form-card{background:#fff;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:34px}
@@ -16,12 +17,16 @@
 .ticket-mini .tag{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--volt)}
 .ticket-mini .price{font-family:var(--font-display);font-size:56px;line-height:1;margin-top:12px;color:var(--offwhite)}
 .ticket-mini .price small{font-size:.5em;vertical-align:.6em;margin-right:2px}
-.ticket-mini .fine{display:block;color:#AEB5C2;font-size:13px;margin-top:8px}
+.ticket-mini .fine{display:block;color:#CAD4E8;font-size:13px;margin-top:8px;line-height:1.5}
 .ticket-mini ul,.ticket-mini ol{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:2px dashed rgba(248,246,241,.25)}
-.ticket-mini li{position:relative;padding:6px 0 6px 18px;font-size:14px;line-height:1.45}
+.ticket-mini li{position:relative;padding:6px 0 6px 18px;font-size:14px;line-height:1.45;color:#F8F6F1}
 .ticket-mini li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;background:var(--volt)}
-.ticket-mini .steps li b{display:block;font-family:var(--font-display);text-transform:uppercase;font-weight:400;color:var(--volt);font-size:15px}
+.ticket-mini .steps li b{display:block;font-family:var(--font-display);text-transform:uppercase;font-weight:400;color:var(--volt);font-size:15px;margin-bottom:3px}
 .ticket-mini .tba{color:#E4E8FF;border-color:rgba(248,246,241,.6)}
+.ticket-callout{margin-top:18px;padding:14px 16px;background:rgba(46,75,255,0.18);border:1px solid rgba(133,150,255,0.4);border-radius:4px;color:var(--offwhite)}
+.ticket-callout p{margin:0;font-size:13px;line-height:1.5;color:#E4E8FF}
+.ticket-callout strong{color:var(--volt);display:inline}
+.ticket-callout a{color:var(--volt);text-decoration:underline;font-weight:700}
 .bf{display:grid;gap:20px}
 .fld{display:grid;gap:7px;border:0;margin:0;padding:0;min-width:0}
 .fld>label:not(.chip),.fld legend{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding:0}

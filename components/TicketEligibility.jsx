@@ -8,6 +8,6 @@ export default function TicketEligibility() {
     {eligibility?.applied ? <p>Your Google account matches a pitch application. Choose the ₹799 ticket in the form below.</p> : <p>Apply to pitch free with this Google account to unlock ₹799.</p>}
     <a href="/apply">Apply to pitch →</a>
     <div className="unlock-row"><strong>₹4,999 showcase pass</strong>{eligibility?.selected ? <span>Selected</span> : <span>Locked</span>}</div>
-    <p>Only selected founders can unlock the showcase pass. Purchase details <span className="tba">TBA</span>.</p>
+    <p>Unlocked automatically for founders confirmed for the top 15 pitch cohort.</p>
   </div>;
 }
