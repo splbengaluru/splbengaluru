@@ -1,0 +1,74 @@
+/* ===== SPL forms (register, apply, interest) ===== */
+.nav.slim .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.slim-link{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--volt);white-space:nowrap}
+.slim-link:hover{color:var(--offwhite)}
+.form-hero{padding:64px 0 72px;position:relative;background:var(--league-blue);color:var(--offwhite)}
+.form-hero .eyebrow{color:var(--volt)}
+.form-title-wrap{position:relative;display:block;width:fit-content;max-width:100%}
+.form-title{font-family:var(--font-hero);font-weight:900;text-transform:uppercase;color:var(--volt);line-height:.86;letter-spacing:-.01em;font-size:clamp(54px,9vw,128px);margin-top:22px;text-shadow:6px 6px 0 var(--shadow-blue)}
+.form-title span{display:block}
+.form-hero .form-sticker{position:absolute;right:-18px;top:-6px;font-family:var(--font-display);font-size:clamp(20px,2.6vw,34px);transform:rotate(8deg);text-transform:uppercase}
+.form-hero .lede{max-width:680px;margin-top:22px;color:#E4E8FF;font-size:18px;line-height:1.55}
+.form-body{padding:64px 0 96px;background:var(--offwhite)}
+.form-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;align-items:start}
+.form-card{background:#fff;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:34px}
+.form-aside{position:sticky;top:96px}
+.ticket-mini{background:var(--ink);color:var(--offwhite);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--league-blue);padding:26px}
+.ticket-mini .tag{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--volt)}
+.ticket-mini .price{font-family:var(--font-display);font-size:56px;line-height:1;margin-top:12px;color:var(--offwhite)}
+.ticket-mini .price small{font-size:.5em;vertical-align:.6em;margin-right:2px}
+.ticket-mini .fine{display:block;color:#CAD4E8;font-size:13px;margin-top:8px;line-height:1.5}
+.ticket-mini ul,.ticket-mini ol{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:2px dashed rgba(248,246,241,.25)}
+.ticket-mini li{position:relative;padding:6px 0 6px 18px;font-size:14px;line-height:1.45;color:#F8F6F1}
+.ticket-mini li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;background:var(--volt)}
+.ticket-mini .steps li b{display:block;font-family:var(--font-display);text-transform:uppercase;font-weight:400;color:var(--volt);font-size:15px;margin-bottom:3px}
+.ticket-mini .tba{color:#E4E8FF;border-color:rgba(248,246,241,.6)}
+.ticket-callout{margin-top:18px;padding:14px 16px;background:rgba(46,75,255,0.18);border:1px solid rgba(133,150,255,0.4);border-radius:4px;color:var(--offwhite)}
+.ticket-callout p{margin:0;font-size:13px;line-height:1.5;color:#E4E8FF}
+.ticket-callout strong{color:var(--volt);display:inline}
+.ticket-callout a{color:var(--volt);text-decoration:underline;font-weight:700}
+.bf{display:grid;gap:20px}
+.fld{display:grid;gap:7px;border:0;margin:0;padding:0;min-width:0}
+.fld>label:not(.chip),.fld legend{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding:0}
+.fld legend{margin-bottom:8px}
+.req{color:var(--pink);margin-left:4px}
+.fld input:not([type=checkbox]):not([type=radio]),.fld select,.fld textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--offwhite);border:2px solid var(--ink);border-radius:0;padding:12px 14px;box-shadow:4px 4px 0 var(--ink);transition:box-shadow .12s,transform .12s;appearance:none}
+.fld select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:36px}
+.fld textarea{resize:vertical;min-height:110px}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;background:#fff;box-shadow:5px 5px 0 var(--league-blue);transform:translate(-1px,-1px)}
+.fld.bad input,.fld.bad select,.fld.bad textarea{border-color:var(--pink);box-shadow:4px 4px 0 var(--pink)}
+.hint{font-size:13px;color:#5B6270}
+.err{font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.06em}
+.choices{display:grid;gap:10px}
+.chip{display:flex;gap:12px;align-items:center;border:2px solid var(--ink);background:var(--offwhite);padding:12px 14px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);font-size:15px;line-height:1.35}
+.chip input{accent-color:var(--league-blue);width:18px;height:18px;flex:none}
+.chip:has(input:checked){background:var(--volt)}
+.fld.check label{font-family:var(--font-body,inherit);text-transform:none;letter-spacing:0;font-weight:400;padding:0;display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.45;cursor:pointer}
+.fld.check input{accent-color:var(--league-blue);width:18px;height:18px;flex:none;margin-top:2px}
+.fld.bad.choices .chip,.fld.bad.check label{border-color:var(--pink)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.bf-msg{background:var(--pink);color:#fff;font-weight:600;padding:12px 14px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.bf-submit{justify-self:start;font-size:15px;padding:16px 26px;cursor:pointer}
+.bf-submit:disabled{opacity:.6;cursor:wait}
+.bf-done{position:relative;padding:18px 0}
+.bf-done h3{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(34px,4vw,52px);line-height:1;margin-top:18px}
+.bf-done p{margin-top:12px;font-size:17px;max-width:520px}
+.bf-stamp{display:inline-block;font-family:var(--font-lockup);color:#fff;background:var(--pink);border:4px solid #fff;box-shadow:5px 5px 0 var(--ink);padding:4px 16px 8px;font-size:30px;transform:rotate(-6deg)}
+@media(max-width:860px){
+  .form-grid{grid-template-columns:1fr}
+  .form-aside{position:static;order:-1}
+  .form-card{padding:22px;box-shadow:7px 7px 0 var(--ink)}
+  .form-hero{padding:40px 0 52px}
+  .form-hero .form-sticker{right:0;top:-18px}
+  .slim-link{font-size:10px}
+  .nav.slim .brand .city{display:none}
+}
+.form-hero .kn-sticker.form-sticker{position:absolute;left:auto;right:-34px;top:-18px;bottom:auto;margin:0;display:inline-block;width:auto;font-size:30px;line-height:1.1;padding:.08em .5em .16em;border-width:4px;box-shadow:5px 5px 0 var(--ink);transform:rotate(8deg);white-space:nowrap}
+@media(max-width:860px){.form-hero .kn-sticker.form-sticker{position:relative;right:auto;top:auto;margin:16px 0 0;font-size:22px;transform:rotate(-4deg)}}
+.ticket-unlock{background:#fff;border:2px solid var(--ink);box-shadow:5px 5px var(--ink);padding:20px;margin-bottom:26px}.unlock-row{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #cdd0d8;padding-top:12px;margin-top:14px;font:700 13px var(--font-mono)}.unlock-row:first-child{border:0;margin:0;padding:0}.unlock-row span{color:var(--league-blue)}.ticket-unlock p{font-size:14px;line-height:1.5;margin:8px 0}.ticket-unlock a{color:var(--league-blue);font-weight:700}
+
+.identity-field input[readonly]{color:var(--ink);background:#ebefe1;box-shadow:4px 4px 0 var(--league-blue);cursor:default}.bf-auth-note{background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--league-blue);padding:22px;line-height:1.5}.bf-auth-note strong{font-family:var(--font-display);font-size:22px;text-transform:uppercase}.bf-auth-note p{margin:10px 0 22px}.bf-auth-note .btn{display:inline-block;text-decoration:none;padding:12px 16px}
+
+.test-checkout{margin-top:24px;padding:20px;border:2px solid var(--ink);background:#e8ebff;box-shadow:5px 5px 0 var(--league-blue)}.test-checkout p{font-size:14px;line-height:1.5;margin:0 0 14px}.test-checkout .test-tag{font:700 12px var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--league-blue)}.test-checkout button{padding:12px 16px}.test-checkout .test-error{color:#a0003c;margin-top:14px}
+
+.form-flow{display:grid;gap:40px;max-width:960px}.form-jump{display:inline-block;margin-top:28px}.pass-details .ticket-mini{padding:30px}.pass-details .ticket-mini ul,.pass-details .ticket-mini ol{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}.form-section-title{font:32px var(--font-display);margin:12px 0 28px;text-transform:uppercase}#registration{scroll-margin-top:145px}@media(max-width:760px){.pass-details .ticket-mini ul,.pass-details .ticket-mini ol{grid-template-columns:1fr}.pass-details .ticket-mini{padding:22px}}
