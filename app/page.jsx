@@ -94,7 +94,7 @@ export default function HomePage() {
 <section className="panel-bg" id="badges">
   <div className="wrap">
     <span className="eyebrow">Who is in the room</span>
-    <h2>Find your <span className="hl">track.</span></h2>
+    <h2>Select your <span className="hl">track.</span></h2>
     <p className="lede">Founders, early operators, investors and ecosystem partners gather under one roof on 24 October 2026. Explore your role below:</p>
     <BadgeDeck />
     <div className="swipe-hint">SWIPE FOR ALL 5 &rarr;</div>

@@ -6,9 +6,8 @@ const badges = [
     rotation: "-3deg",
     image: "/assets/badge-founder-feed.jpg",
     alt: "I'm pitching",
-    tag: "Track 01",
     title: "For Founders",
-    description: "Pitch live to active VCs, defend your unit economics on stage, and compete for the $1,000,000 prize.",
+    description: "Pitch live on stage to active VCs and compete for the $1,000,000 prize.",
     href: "/apply",
     cta: "Apply Now →",
   },
@@ -16,9 +15,8 @@ const badges = [
     rotation: "2deg",
     image: "/assets/badge-attendee-feed.jpg",
     alt: "I'm in the room",
-    tag: "Track 02",
     title: "For Attendees",
-    description: "Watch 15 high-stakes pitches, deconstruct live institutional diligence, and connect with top founders.",
+    description: "Watch 15 real pitches, deconstruct live diligence and connect with builders.",
     href: "/register",
     cta: "Claim Pass (₹999) →",
   },
@@ -26,9 +24,8 @@ const badges = [
     rotation: "-1deg",
     image: "/assets/badge-investor-feed.jpg",
     alt: "I brought a cheque",
-    tag: "Track 03",
-    title: "For Investors & Angels",
-    description: "Scout pre-vetted deal flow, review stage diligence memos, and syndicate backing for top Indian ventures.",
+    title: "For Investors",
+    description: "Scout pre-vetted deal flow and evaluate India's top 15 teams.",
     href: "/interest/vc",
     cta: "VC Registration →",
   },
@@ -36,9 +33,8 @@ const badges = [
     rotation: "3deg",
     image: "/assets/badge-builder-feed.jpg",
     alt: "I'm building",
-    tag: "Track 04",
-    title: "For Partners & Sponsors",
-    description: "Showcase developer infrastructure, secure high-impact brand visibility, and back the Silicon Valley pathway.",
+    title: "For Partners",
+    description: "Demo tools, showcase infrastructure and back the Silicon Valley pathway.",
     href: "/interest/sponsor",
     cta: "Partner Track →",
   },
@@ -46,9 +42,8 @@ const badges = [
     rotation: "-2deg",
     image: "/assets/badge-judge-feed.jpg",
     alt: "I'm judging",
-    tag: "Track 05",
-    title: "For Jury & Evaluation",
-    description: "Score the 15 finalists using the standardized 100-point venture rubric under strict conflict disclosures.",
+    title: "For Jury",
+    description: "Review the standardized 100-point rubric and evaluation flow.",
     href: "/interest/judge",
     cta: "Judging Rubric →",
   },
@@ -56,35 +51,33 @@ const badges = [
 
 export default function BadgeDeck() {
   const [activeFlipped, setActiveFlipped] = useState(0);
-  const [hasInteracted, setHasInteracted] = useState(false);
+  const [userHasFlipped, setUserHasFlipped] = useState(false);
   const timerRef = useRef(null);
 
+  // Auto-flip one by one sequentially until the user flips it themselves
   useEffect(() => {
-    if (hasInteracted) return;
+    if (userHasFlipped) return;
 
     timerRef.current = setInterval(() => {
       setActiveFlipped((prev) => (prev + 1) % badges.length);
-    }, 2400);
+    }, 2800);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [hasInteracted]);
+  }, [userHasFlipped]);
 
-  const handleManualInteraction = (index) => {
-    setHasInteracted(true);
-    if (timerRef.current) clearInterval(timerRef.current);
+  const stopAutoCycleAndSet = (index) => {
+    setUserHasFlipped(true);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
     setActiveFlipped(index);
   };
 
   return (
-    <div
-      className="badge-row"
-      onMouseEnter={() => {
-        setHasInteracted(true);
-        if (timerRef.current) clearInterval(timerRef.current);
-      }}
-    >
+    <div className="badges interactive-badges">
       {badges.map((b, i) => {
         const isOpen = activeFlipped === i;
         return (
@@ -93,24 +86,31 @@ export default function BadgeDeck() {
             className="role-badge"
             style={{ "--r": b.rotation }}
             data-open={isOpen}
-            onMouseEnter={() => handleManualInteraction(i)}
-            onClick={() => handleManualInteraction(isOpen ? -1 : i)}
+            onMouseEnter={() => {
+              if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                stopAutoCycleAndSet(i);
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (userHasFlipped && !e.currentTarget.contains(document.activeElement)) {
+                setActiveFlipped(-1);
+              }
+            }}
           >
             <button
               className="badge-front"
               type="button"
               aria-expanded={isOpen}
-              aria-label={`${b.alt}. Tap to flip details`}
+              aria-label={`${b.alt}. Flip for details`}
               onClick={(e) => {
                 e.stopPropagation();
-                handleManualInteraction(isOpen ? -1 : i);
+                stopAutoCycleAndSet(isOpen ? -1 : i);
               }}
             >
               <img src={b.image} alt={b.alt} loading="lazy" />
               <span>{isOpen ? "Flipped ⟲" : "Flip / tap for details"}</span>
             </button>
-            <div className="badge-back">
-              <span className="badge-tag">{b.tag}</span>
+            <div className="badge-back" onClick={(e) => e.stopPropagation()}>
               <b>{b.title}</b>
               <p>{b.description}</p>
               <a className="btn btn-accent btn-sm" href={b.href}>
@@ -121,7 +121,7 @@ export default function BadgeDeck() {
                 className="badge-reset"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleManualInteraction(-1);
+                  stopAutoCycleAndSet(-1);
                 }}
               >
                 Show badge ↩
