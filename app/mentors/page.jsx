@@ -41,10 +41,11 @@ export default function MentorsPage() {
                 Founder of mypathfinder and co-founder of fiesTA, with extensive leadership scaling talent and human operations at Hubilo, Whatfix, and Pipemonk.
               </p>
               <a
-                className="text-link"
+                className="btn btn-ghost btn-sm"
                 href="https://in.linkedin.com/in/victorchoudhary"
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{ marginTop: 14 }}
               >
                 LinkedIn Profile ↗
               </a>
