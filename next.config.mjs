@@ -13,6 +13,8 @@ const nextConfig = {
     return [
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/season-1.html", destination: "/season-1", permanent: true },
+      { source: "/terms", destination: "/tnc", permanent: true },
+      { source: "/terms-and-conditions", destination: "/tnc", permanent: true },
     ];
   },
 };
