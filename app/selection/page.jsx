@@ -36,7 +36,7 @@ export default function Selection() {
           <div className="wrap">
             <h2>What we evaluate in Round 1.</h2>
             <p className="lede">
-              We look for acute customer pain, differentiated product or service craft, early traction or retention evidence, and founder execution ability. Applications are open to both tech and non-tech startups—from early validation through scaling revenue.
+              We look for acute customer pain, differentiated product or service craft, early traction or retention evidence, and founder execution ability. Applications are open to both tech and non-tech startups, from early validation through scaling revenue.
             </p>
             <h3 style={{ marginTop: 36 }}>The 100-point venture standard</h3>
             <p className="lede">

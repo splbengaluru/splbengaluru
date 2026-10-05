@@ -17,7 +17,7 @@ export default function SponsorInterestPage() {
       eyebrow="Partnerships & Showcase Booths · 24 Oct 2026 · Bengaluru"
       title={<><span>Reach high-growth </span><span>founders directly.</span></>}
       sticker="Showcase"
-      sub="If your customers are venture-backed founders and scaling engineering teams—cloud, fintech, banking, devtools, hiring, and legal infrastructure—SPL puts you in front of qualified buyers."
+      sub="If your customers are venture-backed founders and scaling engineering teams in cloud, fintech, banking, devtools, hiring, or legal infrastructure, SPL puts you directly in front of qualified buyers."
       aside={
         <div className="ticket-mini">
           <span className="tag">Partner &amp; Showcase Program</span>

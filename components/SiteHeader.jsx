@@ -13,7 +13,7 @@ export default function SiteHeader({ active }) {
     <li><a href="/partners">Partners</a></li>
   </ul>
   <div className="nav-right">
-  <a className="btn btn-accent btn-sm" href="/apply">Apply free</a>
+  <a className="btn btn-accent btn-sm" href="/apply">Apply Now</a>
   <PublicAuth /></div>
   
 </div>

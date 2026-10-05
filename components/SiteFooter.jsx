@@ -39,13 +39,14 @@ export default function SiteFooter() {
                 <li><a href="/go/whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp organizer desk</a></li>
                 <li><a href="/#contact">Direct inquiry form</a></li>
                 <li><a href="/privacy">Privacy policy</a></li>
+                <li><a href="/tnc">Terms &amp; conditions</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div className="bottom">
           <span>© <span id="yr">2026</span> Startup League Bengaluru (SPL) · Pegasus Tech Ventures Regional Partner</span>
-          <span><a href="/privacy">Privacy</a> · 24 October 2026 · Bengaluru, India</span>
+          <span><a href="/privacy">Privacy</a> · <a href="/tnc">Terms</a> · 24 October 2026 · Bengaluru, India</span>
         </div>
       </div>
     </footer>
