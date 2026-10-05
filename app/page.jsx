@@ -77,7 +77,7 @@ export default function HomePage() {
         <ul><li>Submit pitch video &amp; startup details</li><li>Screened for the 15-startup live stage</li><li>Unlocks the ₹799 applicant attendee rate</li><li>Pitch deck optional</li></ul>
         <a className="btn btn-ghost" href="/apply">Apply Now</a></div>
       <div className="ticket feat"><span className="tag">Verified applicants</span><div className="price"><small>₹</small>799</div><span className="fine">Unlocked with matching application email</span><div className="perf"></div>
-        <ul><li>Full day: all 15 pitches, Q&amp;A and booths</li><li>Direct access to founders, mentors and VCs</li><li>Interactive quizzes and audience sessions</li><li>Networking lunch and ecosystem breaks</li></ul>
+        <ul><li>Full day: all 15 pitches, Q&amp;A and booths</li><li>Direct access to founders, mentors and VCs</li><li>Live pitch heats, teardowns and Q&amp;A</li><li>Networking lunch and ecosystem breaks</li></ul>
         <a className="btn" href="/register">Unlock ₹799 Founder Rate</a></div>
       <div className="ticket"><span className="tag">General attendee</span><div className="price"><small>₹</small>999</div><span className="fine">Standard full-day pass</span><div className="perf"></div>
         <ul><li>Full day: pitches, jury reviews and booths</li><li>Learn how high-stakes pitches are evaluated</li><li>Connect with active founders and engineers</li><li>Open networking and community sessions</li></ul>
@@ -169,7 +169,7 @@ export default function HomePage() {
       <details><summary>What does it cost if our startup is selected for the stage?</summary><p>If selected among the 15 stage finalists, startups unlock the ₹4,999 Showcase Pass. This includes the live pitch slot, venue demo space, and full inclusion in the VC deal-flow memo.</p></details>
       <details><summary>How long is each pitch?</summary><p>Finalists receive a dedicated live presentation block followed immediately by interactive jury Q&amp;A. Exact minute allocations are briefed to shortlisted teams.</p></details>
       <details><summary>Who judges the pitches?</summary><p>An independent panel of active institutional VCs, prominent angel investors, and experienced operators. The top three startups advance directly to the USA.</p></details>
-      <details><summary>Can audience members participate?</summary><p>Yes. Audience members participate in live audience polling, interactive founder quizzes, open Q&amp;A sessions, and dedicated networking blocks.</p></details>
+      <details><summary>Can audience members participate?</summary><p>Yes. Audience members participate in open founder Q&amp;A, live jury teardowns, ecosystem discussions, and dedicated networking blocks.</p></details>
       <details><summary>Where and when is the event?</summary><p>24 October 2026 in Bengaluru. Doors open in the morning for a full day of pitches, showcase demos, and networking. Exact venue details are sent directly to registered pass holders.</p></details>
       <details><summary>Can I get a refund?</summary><p>Tickets are non-refundable and non-cancellable, but transferrable upon request to the organizing team.</p></details>
       <details><summary>Will the event be photographed or recorded?</summary><p>Yes, main stage pitches and presentations will be recorded and shared. If you prefer not to appear in attendee crowd photos, you can notify the event check-in desk on arrival.</p></details>
