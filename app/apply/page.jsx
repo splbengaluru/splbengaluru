@@ -15,7 +15,7 @@ export default function ApplyPage() {
       type="founder"
       eyebrow="Round 1 · Open Application"
       title={<><span>Apply to </span><span>pitch.</span></>}
-      sub="Round 1 is open to every founder across Bengaluru—both tech and non-tech startups. Whether you are building an AI platform, a consumer D2C brand, hardware, food & beverage, or manufacturing, submit what you are building, why it matters, and share a brief pitch video link. A pitch deck is optional."
+      sub="Round 1 is open to every founder across Bengaluru, covering both tech and non-tech startups. Whether you are building an AI platform, a consumer D2C brand, hardware, food & beverage, or manufacturing, submit what you are building, why it matters, and share a brief pitch video link. A pitch deck is optional."
       aside={
         <div className="ticket-mini">
           <span className="tag">Founder Track · ₹0 Application · Tech &amp; Non-Tech</span>

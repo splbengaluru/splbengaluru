@@ -5,61 +5,60 @@ const stops = [
   {
     n: "01",
     id: "what",
-    label: "Open application",
-    title: "One application. Zero gatekeeping.",
-    body: "Whether you are building a software MVP, a physical product, a consumer D2C brand, or scaling revenue, Round 1 is open to every founder across Bengaluru—tech and non-tech alike. No warm intros required.",
-    note: "Tell us who you are, what you are building, and why it matters. Submit a brief pitch video link. A deck is optional.",
-    links: [["Apply to pitch (Free)", "/apply"]],
+    label: "Screening Application",
+    title: "Open screening. Zero warm intros.",
+    body: "Every high-conviction founder building tech or non-tech in Bengaluru can submit. Seed, pre-revenue, or scaling ARR.",
+    note: "Submit traction metrics, defensibility, and pitch video. Deck optional.",
+    links: [["Apply Now · Cohort Slots Open", "/apply"]],
   },
   {
     n: "02",
     id: "format",
-    label: "The shortlist",
-    title: "15 startups earn the stage.",
-    body: "Submissions are screened across problem validation, product moat, traction, and team execution. 15 standout teams are selected to pitch live at SPL Season 1.",
-    note: "Evaluated against a standardized 100-point venture scorecard. Selection updates roll out ahead of pitch day.",
+    label: "The Shortlist",
+    title: "15 teams survive the diligence cut.",
+    body: "The selection committee screens for defensible moats, unit economics, market size, and execution speed.",
+    note: "Scored on a standardized 100-point venture scorecard. 15 cohort finalists advance.",
     links: [
-      ["View the scorecard", "#rubric"],
-      ["Selection details", "/selection"],
-      ["Apply with your idea", "/apply"],
+      ["Inspect Scorecard", "#rubric"],
+      ["Diligence Process", "/selection"],
+      ["Apply Now", "/apply"],
     ],
   },
   {
     n: "03",
     id: "event",
-    label: "The regional stage",
-    title: "Live pitches. Unfiltered questions.",
-    body: "15 founders present to a dedicated jury, an audience of active venture funds, and 200+ founders, operators, and builders from Bengaluru's tech ecosystem.",
-    note: "24 October 2026 in Bengaluru. A full day of competitive pitch heats, live jury diligence, and ecosystem networking.",
+    label: "The Regional Arena",
+    title: "Live pitches. Institutional diligence.",
+    body: "15 founders pitch live to institutional GPs, angel syndicates, and a room of 200+ active ecosystem operators.",
+    note: "24 October 2026 in Bengaluru. High-stakes pitch heats, cap table defense, and direct LP/GP deal flow.",
     links: [
-      ["Pitch day format", "/event-details"],
-      ["Judging track", "/interest/judge"],
-      ["Join as an investor", "/interest/vc"],
-      ["Get attendee pass", "/register"],
+      ["Pitch Day Flow", "/event-details"],
+      ["VC Registration", "/interest/vc"],
+      ["Claim Attendee Pass", "/register"],
     ],
   },
   {
     n: "04",
     id: "travel",
-    label: "Bengaluru → San Francisco",
-    title: "Top 3 to the USA. Top 10 qualify for 2027.",
-    body: "The jury selects the top three teams to represent Bengaluru at the Startup World Cup Grand Finale in San Francisco. SPL provides official visa recommendation letters and coordinates travel sponsorship grants.",
-    note: "The top 10 ranked startups earn automatic qualification into the 2027 Startup World Cup regional pipeline.",
+    label: "BLR to Silicon Valley",
+    title: "Top 3 fly to San Francisco.",
+    body: "The jury selects the top three ventures to represent India in Silicon Valley. Travel grants and visa support coordinated directly.",
+    note: "Top 10 ranked teams gain fast-track qualification into the 2027 global syndicate pipeline.",
     links: [
-      ["Founder pathway", "/apply"],
-      ["Sponsor travel grants", "/interest/sponsor"],
+      ["Apply Now", "/apply"],
+      ["Partner with SPL", "/interest/sponsor"],
     ],
   },
   {
     n: "05",
     id: "world-cup",
-    label: "Startup World Cup",
-    title: "Compete for the $1M investment prize.",
-    body: "Stand on stage alongside 50+ global champions at the Startup World Cup Grand Finale in Silicon Valley, hosted by Pegasus Tech Ventures.",
-    note: "Finalists pitch directly for the global $1,000,000 investment prize in front of premier international venture investors.",
+    label: "Global Grand Finale",
+    title: "Compete for the $1,000,000 term sheet.",
+    body: "Pitch alongside 50+ international champions at the Startup World Cup Grand Finale, hosted by Pegasus Tech Ventures in Silicon Valley.",
+    note: "Compete for a $1,000,000 global investment prize in front of tier-one US venture capital firms.",
     links: [
-      ["Explore Startup World Cup", "https://www.startupworldcup.io/"],
-      ["Meet Pegasus Tech Ventures", "https://www.pegasustechventures.com/"],
+      ["Startup World Cup ↗", "https://www.startupworldcup.io/"],
+      ["Pegasus Tech Ventures ↗", "https://www.pegasustechventures.com/"],
     ],
   },
 ];
@@ -129,19 +128,19 @@ export default function StartupJourney() {
                     <p>
                       Join 200+ founders, operators, and early engineers. Experience live pitches, jury teardowns, and interactive audience discussions.
                     </p>
-                    <a className="text-link" href="/register">
-                      Explore attendee passes →
+                    <a className="btn btn-accent btn-sm" href="/register">
+                      Explore Attendee Passes →
                     </a>
                   </aside>
                 )}
                 {i === 4 && (
                   <>
                     <div className="journey-logos">
-                      <a href="https://www.startupworldcup.io/" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.startupworldcup.io/" target="_blank" rel="noopener noreferrer" className="journey-logo-card">
                         <img src="/assets/swc/logo.png" alt="Startup World Cup" />
                       </a>
-                      <a href="https://www.pegasustechventures.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/swc/pegasus.png" alt="Pegasus Tech Ventures" />
+                      <a href="https://www.pegasustechventures.com/" target="_blank" rel="noopener noreferrer" className="journey-logo-card pegasus-card">
+                        <img src="/assets/swc/pegasus.png" alt="Pegasus Tech Ventures" className="pegasus-logo-img" />
                       </a>
                     </div>
                     <p className="journey-note">Official regional partner for Pegasus Tech Ventures and Startup World Cup.</p>
