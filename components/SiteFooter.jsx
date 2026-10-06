@@ -7,8 +7,8 @@ export default function SiteFooter() {
             <a className="brand" href="/" aria-label="Startup League Bengaluru home">
               <img className="spl-logo" src="/assets/spl-logo.jpg" alt="SPL Bengaluru" width="1400" height="846" style={{ width: 180, height: "auto", maxWidth: "100%" }} />
             </a>
-            <p className="muted" style={{ marginTop: "16px", maxWidth: "320px", fontSize: "14px" }}>
-              Regional partner for Startup World Cup, powered by Pegasus Tech Ventures. Top 3 Indian finalists advance to the Silicon Valley Grand Finale ($1,000,000 USD prize).
+            <p className="muted" style={{ marginTop: "16px", fontSize: "14px" }}>
+              <a href="/tnc">Terms and conditions</a> apply<sup className="ast">*</sup>
             </p>
           </div>
           <div className="cols">
@@ -44,11 +44,8 @@ export default function SiteFooter() {
             </div>
           </div>
         </div>
-        <p className="ast-note">
-          Items marked <sup className="ast">*</sup> are planned but not final yet. How we handle changes: <a href="/tnc">terms &amp; conditions</a>.
-        </p>
         <div className="bottom">
-          <span>© <span id="yr">2026</span> Startup League Bengaluru (SPL) · Pegasus Tech Ventures Regional Partner</span>
+          <span>© <span id="yr">2026</span> Startup League Bengaluru (SPL)</span>
           <span><a href="/privacy">Privacy</a> · <a href="/tnc">Terms</a> · 24 October 2026 · Bengaluru, India</span>
         </div>
       </div>

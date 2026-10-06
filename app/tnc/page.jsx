@@ -33,7 +33,7 @@ export default function TermsPage() {
 
             <h2>Details marked with an asterisk (*)</h2>
             <p>
-              Across this site, items marked with an asterisk (*) are planned but not yet final. At the time of publishing, these are: the venue, door timings, the session running order, jury appointments, additional mentors, the expected room size, and 2027 season details. We confirm them on this site and in emails to registered pass holders as they are locked in. If a marked detail changes, the updated information on this site and the event emails is the authoritative version and takes precedence over earlier posts, screenshots or social media.
+              Across this site, items marked with an asterisk (*) are planned but not yet final. At the time of publishing, these are: the venue, door timings, the session running order, jury appointments, the expected room size, and 2027 season details. We confirm them on this site and in emails to registered pass holders as they are locked in. If a marked detail changes, the updated information on this site and the event emails is the authoritative version and takes precedence over earlier posts, screenshots or social media.
             </p>
 
             <h2>Pitch applications and stage selection</h2>
