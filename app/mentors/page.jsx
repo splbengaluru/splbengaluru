@@ -25,7 +25,7 @@ export default function MentorsPage() {
       </section>
       <section className="panel-bg">
         <div className="wrap">
-          <span className="eyebrow">Confirmed Mentor</span>
+          <span className="eyebrow">Mentor spotlight</span>
           <h2>
             Talent, culture, and
             <br />
@@ -34,7 +34,6 @@ export default function MentorsPage() {
           <article className="mentor-feature">
             <img src="/assets/people/victor-c.jpg" alt="Victor C." width="320" height="320" />
             <div>
-              <span className="k">Confirmed Mentor</span>
               <h3>Victor C.</h3>
               <p className="person-title">Recruitment, HR &amp; Tech Leader</p>
               <p>
@@ -67,14 +66,14 @@ export default function MentorsPage() {
           </h2>
           <div className="cards">
             <div className="card">
-              <span className="k">Mentor Network</span>
-              <h3>Scaling &amp; Growth Leaders</h3>
+              <span className="k">The mentor panel</span>
+              <h3>Time with the teams that need it most</h3>
               <p>
-                Founders, growth specialists, and technical architects joining to advise shortlisted teams during dedicated midday breakout sessions.
+                We connect the top startups of Bengaluru to our mentors, and they work together on hiring, product, distribution and pitch craft until pitch day. If you have built and scaled, there is a seat for you.
               </p>
             </div>
             <div className="card">
-              <span className="k">Breakout Tracks</span>
+              <span className="k">Focus areas</span>
               <h3>Tactical Focus Areas</h3>
               <p>
                 Actionable guidance across early hiring, technical infrastructure, unit economics, go-to-market distribution, and pitch presentation.
@@ -92,7 +91,7 @@ export default function MentorsPage() {
             </div>
           </div>
           <div className="cta-row" style={{ marginTop: 36 }}>
-            <a className="btn btn-accent" href="/interest/judge">Express Interest to Mentor →</a>
+            <a className="btn btn-accent" href="/interest/judge">Join the mentor panel →</a>
             <a className="btn btn-ghost" href="/#hosts">Organizing Team →</a>
           </div>
         </div>
