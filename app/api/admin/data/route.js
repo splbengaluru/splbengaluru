@@ -11,6 +11,6 @@ export async function GET() {
       rest("rpc/analytics_snapshot", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" }).then(r => r.json()),
       ...tables.map(table => rest(`${table}?select=*&order=created_at.desc&limit=200`).then(r => r.json())),
     ]);
-    return Response.json({ admin: admin.email, analytics: summary, forms: Object.fromEntries(tables.map((t, i) => [t, entries[i]])) }, { headers: { "Cache-Control": "private, no-store" } });
+    return Response.json({ admin: admin.email, adminId: admin.id, analytics: summary, forms: Object.fromEntries(tables.map((t, i) => [t, entries[i]])) }, { headers: { "Cache-Control": "private, no-store" } });
   } catch { return Response.json({ error: "Dashboard temporarily unavailable." }, { status: 503 }); }
 }

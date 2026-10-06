@@ -2,6 +2,7 @@ import { publicIdentity } from "@/lib/public-auth";
 import { sameOrigin } from "@/lib/admin";
 import { rest } from "@/lib/supabase";
 import { DEFAULT_AVATAR, normalizeAvatar } from "@/lib/avatar";
+import { captureServerEvent } from "@/lib/posthog-server";
 const json = (data, status = 200) => Response.json(data, { status, headers: { "Cache-Control": "private, no-store" } });
 export async function GET() {
   const identity = await publicIdentity();
@@ -20,6 +21,7 @@ export async function PUT(req) {
   try {
     await rest("member_avatars?on_conflict=auth_user_id", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "resolution=merge-duplicates,return=minimal" },
       body: JSON.stringify({ auth_user_id: identity.id, avatar }) });
+    await captureServerEvent({ distinctId: identity.id, event: "avatar_updated" });
     return json({ ok: true, avatar });
   } catch { return json({ error: "Couldn't save your avatar. Try again." }, 503); }
 }

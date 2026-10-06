@@ -4,6 +4,9 @@ import { rest, config } from "@/lib/supabase";
 import { razorpayAPI, razorpayConfig } from "@/lib/razorpay";
 import { publicIdentity } from "@/lib/public-auth";
 import { ticketEligibility } from "@/lib/ticket-eligibility";
+import { after } from "next/server";
+import { captureServerEvent } from "@/lib/posthog-server";
+import { emitPostHogLog, flushPostHogLogs } from "@/lib/posthog-logs";
 
 export async function POST(req) {
   if (!sameOrigin(req)) return Response.json({ error: "Invalid request" }, { status: 403 });
@@ -32,6 +35,20 @@ export async function POST(req) {
     if (!order.id || order.amount !== amount || order.currency !== "INR") throw new Error("order mismatch");
     await rest("payment_orders", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "return=minimal" },
       body: JSON.stringify({ registration_id: row.id, auth_user_id: identity.id, account_email: identity.email, razorpay_order_id: order.id, amount_paise: amount, currency: "INR", mode: cfg.mode }) });
+    await captureServerEvent({
+      distinctId: identity.id,
+      event: "payment_order_created",
+      properties: { amount_paise: amount, currency: "INR", payment_mode: cfg.mode, ticket_type: row.ticket_type },
+    });
+    emitPostHogLog("Payment order created", {
+      event: "payment_order_created",
+      amount_paise: amount,
+      currency: "INR",
+      payment_mode: cfg.mode,
+      ticket_type: row.ticket_type,
+      outcome: "success",
+    });
+    after(flushPostHogLogs);
     return Response.json({ orderId: order.id, keyId: cfg.id, amount, currency: "INR", mode: cfg.mode,
       prefill: { name: row.full_name, email: row.email, contact: row.phone } }, { headers: { "Cache-Control": "no-store" } });
   } catch { return Response.json({ error: "Couldn't create test order. Try later." }, { status: 503 }); }

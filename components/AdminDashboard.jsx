@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 
 const labels = {
   audience_registrations: "Audience", founder_applications: "Founders",
@@ -27,13 +28,14 @@ export default function AdminDashboard() {
   const [tab, setTab] = useState("audience_registrations");
   const [googleEnabled, setGoogleEnabled] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const identifiedAdminId = useRef(null);
   async function load(silent = false) {
     if (!silent) setLoading(true);
     try {
       const r = await fetch("/api/admin/data", { cache: "no-store" });
       const d = await r.json();
       if (!r.ok) { setData(null); setError(d.error || "Unavailable"); }
-      else { setData(d); setError(""); }
+      else { if (d.adminId && identifiedAdminId.current !== d.adminId) { posthog.identify(d.adminId, { email: d.admin }); identifiedAdminId.current = d.adminId; } setData(d); setError(""); }
     } catch { setError("No connection. Try again."); }
     finally { if (!silent) setLoading(false); }
   }
@@ -51,6 +53,7 @@ export default function AdminDashboard() {
   }
   async function logout() {
     await fetch("/api/admin/logout", { method: "POST" });
+    posthog.reset(); identifiedAdminId.current = null;
     setData(null); setCredentials({ email: "", password: "" });
   }
   const a = data?.analytics || {};

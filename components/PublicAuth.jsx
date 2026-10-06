@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import PixelAvatar from "@/components/PixelAvatar";
 import AvatarCursor from "@/components/AvatarCursor";
 import { AVATAR_OPTIONS, DEFAULT_AVATAR } from "@/lib/avatar";
@@ -12,7 +13,8 @@ export default function PublicAuth() {
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR), [draft, setDraft] = useState(DEFAULT_AVATAR);
   const [open, setOpen] = useState(false), [editing, setEditing] = useState(false), [saving, setSaving] = useState(false), [message, setMessage] = useState("");
   const root = useRef(null);
-  useEffect(() => { fetch("/api/auth/me", { cache: "no-store" }).then(r => r.json()).then(d => setState({ user: d.user || null, googleEnabled: !!d.googleEnabled })).catch(() => setState({ user: null, googleEnabled: false })); }, []);
+  const identifiedUserId = useRef(null);
+  useEffect(() => { fetch("/api/auth/me", { cache: "no-store" }).then(r => r.json()).then(d => { if (d.user?.id && identifiedUserId.current !== d.user.id) { posthog.identify(d.user.id, { email: d.user.email, name: d.user.name }); identifiedUserId.current = d.user.id; } setState({ user: d.user || null, googleEnabled: !!d.googleEnabled }); }).catch(() => setState({ user: null, googleEnabled: false })); }, []);
   useEffect(() => { if (!state.user) return; fetch("/api/profile/avatar", { cache: "no-store" }).then(r => r.json()).then(d => { if (d.avatar) { setAvatar(d.avatar); setDraft(d.avatar); } }).catch(() => {}); }, [state.user?.id]);
   useEffect(() => {
     if (!open) return;
@@ -21,7 +23,7 @@ export default function PublicAuth() {
     document.addEventListener("pointerdown", away); document.addEventListener("keydown", escape);
     return () => { document.removeEventListener("pointerdown", away); document.removeEventListener("keydown", escape); };
   }, [open]);
-  const logout = async () => { await fetch("/api/auth/logout", { method: "POST" }); setState(s => ({ ...s, user: null })); setOpen(false); window.dispatchEvent(new Event("spl-auth-change")); };
+  const logout = async () => { await fetch("/api/auth/logout", { method: "POST" }); posthog.reset(); identifiedUserId.current = null; setState(s => ({ ...s, user: null })); setOpen(false); window.dispatchEvent(new Event("spl-auth-change")); };
   async function save() {
     setSaving(true); setMessage("");
     try {
