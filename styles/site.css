@@ -99,6 +99,10 @@ section{padding:110px 0;position:relative}
 .ticket .perf{margin:22px -32px 0;border-top:2px dashed color-mix(in srgb,var(--muted) 22%,transparent)}
 .ticket.feat .perf{border-color:color-mix(in srgb,var(--accent-ink) 20%,transparent)}
 .note{margin-top:22px;font-size:14px;color:var(--muted)}
+/* (*) marks details that are planned but not final; explained on /tnc */
+.ast{color:var(--orange);font-weight:800;font-size:.8em;line-height:0;margin-left:2px}
+.ast-note{margin-top:22px;font-size:13px;color:var(--muted)}
+.ast-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 /* faq */
 .faq{margin-top:40px;border-top:1px solid color-mix(in srgb,var(--muted) 16%,transparent)}
 .faq details{border-bottom:1px solid color-mix(in srgb,var(--muted) 16%,transparent);padding:22px 0}

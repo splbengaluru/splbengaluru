@@ -37,7 +37,7 @@ export default function ApplyPage() {
             </li>
             <li>
               <b>Global Grand Finale</b>
-              The top three startups advance to the Startup World Cup in San Francisco to compete for the $1,000,000 investment prize. The top 10 qualify for 2027.
+              The top three startups advance to the Startup World Cup in San Francisco to compete for the $1,000,000 investment prize. The top 10 qualify for 2027.<sup className="ast">*</sup>
             </li>
           </ol>
           <p className="fine">

@@ -7,7 +7,7 @@ const stops = [
     id: "what",
     label: "Screening Application",
     title: "Open screening. Zero warm intros.",
-    body: "Every high-conviction founder building tech or non-tech in Bengaluru can submit. Seed, pre-revenue, or scaling ARR.",
+    body: "Every founder building tech or non-tech in Bengaluru can submit, from seed and pre-revenue to scaling ARR.",
     note: "Submit traction metrics, defensibility, and pitch video. Deck optional.",
     links: [["Apply Now · Cohort Slots Open", "/apply"]],
   },
@@ -30,7 +30,7 @@ const stops = [
     label: "The Regional Arena",
     title: "Live pitches. Institutional diligence.",
     body: "15 founders pitch live to institutional GPs, angel syndicates, and a room of 200+ active ecosystem operators.",
-    note: "24 October 2026 in Bengaluru. High-stakes pitch heats, cap table defense, and direct LP/GP deal flow.",
+    note: "24 October 2026 in Bengaluru. Pitch heats, jury Q&A on the numbers, and deal flow in the room.",
     links: [
       ["Pitch Day Flow", "/event-details"],
       ["VC Registration", "/interest/vc"],
@@ -42,8 +42,8 @@ const stops = [
     id: "travel",
     label: "BLR to Silicon Valley",
     title: "Top 3 fly to San Francisco.",
-    body: "The jury selects the top three ventures to represent India in Silicon Valley. Travel grants and visa support coordinated directly.",
-    note: "Top 10 ranked teams gain fast-track qualification into the 2027 global syndicate pipeline.",
+    body: "The jury selects the top three ventures to represent Bengaluru in Silicon Valley. Flights and stays remain the team's own cost; SPL provides winner recommendation letters for visa interviews.",
+    note: "Top 10 ranked teams get fast-track qualification for the 2027 season.*",
     links: [
       ["Apply Now", "/apply"],
       ["Partner with SPL", "/interest/sponsor"],
@@ -126,7 +126,7 @@ export default function StartupJourney() {
                     <span className="eyebrow">↗ In the room · Attendee track</span>
                     <h4>Watch live pitches. Deconstruct live diligence.</h4>
                     <p>
-                      Join 200+ founders, operators, and early engineers. Experience live pitches, jury teardowns, and interactive audience discussions.
+                      Join 200+ founders, operators and engineers* watching live pitches, jury teardowns and open audience discussions.
                     </p>
                     <a className="btn btn-accent btn-sm" href="/register">
                       Explore Attendee Passes →

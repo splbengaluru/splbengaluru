@@ -1,0 +1,74 @@
+/* ============================================================
+   Responsive layer — loaded after content.css.
+   Covers tablets (portrait and landscape), foldables (cover and
+   inner screens), short laptops and landscape phones, which the
+   original 860px mobile pass did not tune for.
+   ============================================================ */
+
+/* --- Tablet band (641-900px): iPad portrait, iPad mini, Galaxy Fold
+       and Pixel Fold inner screens. Two-column card grids instead of
+       the phone-style single column; an odd last card spans the full
+       row so grids stay symmetric. --- */
+@media(min-width:641px) and (max-width:900px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cards>.card:last-child:nth-child(odd){grid-column:1/-1}
+  .tickets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tickets>.ticket:last-child:nth-child(odd){grid-column:1/-1}
+  #partner-preview .cards,#mentors .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* --- Desktop symmetry: no orphan column when a grid holds fewer
+       cards than its column count. --- */
+@media(min-width:901px){
+  #jury .cards{grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px}
+}
+@media(min-width:901px) and (max-width:999px){
+  #investors .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* --- Short viewports (13in laptops, iPad landscape, foldable cover
+       landscape): drop the pinned ticket-scroll effect and show the
+       pass cards directly, so nothing is cut off below the fold. --- */
+@media(max-height:959px){
+  .ticket-scroll-runway{height:auto !important;padding:56px 0}
+  .ticket-pin{position:static !important;height:auto !important;top:auto}
+  .ticket-envelope{height:auto}
+  .ticket-envelope .ticket-stage{display:none}
+  .ticket-emergence{position:relative;opacity:1;transform:none}
+  .ticket-emergence .ticket{transform:none}
+  .ticket-emergence>.tickets{margin-top:0;padding:0}
+}
+
+/* --- Landscape phones and very short windows: compress the hero so
+       the headline, CTAs and stats stay reachable. --- */
+@media(max-width:860px) and (max-height:560px){
+  section{padding:48px 0}
+  .hero{padding-top:20px}
+  .hero-title{font-size:min(31vw,30vh);margin-top:12px;text-shadow:5px 5px 0 var(--shadow-blue)}
+  .title-wrap .kn-sticker,.hero .title-wrap .kn-sticker{margin-top:8px;font-size:22px}
+  .hero-sub{font-size:min(28px,8vh);margin-top:14px}
+  .hero .lede{margin:12px 0 18px;font-size:15px}
+  .tg{margin-top:22px !important}
+  .grass-leaderboard{margin:12px 0 8px auto !important}
+  .hero .stats{margin-top:22px}
+  .hero .stat{padding:12px 10px 0 0}
+  .hero .stat b{font-size:22px}
+  .hero .stat span{font-size:11px}
+  .skyline-wrap{padding-top:54px;margin-top:16px}
+  .skyline-wrap .skyline img{height:110px}
+  .mnav{padding:8px 18px 10px}
+}
+
+/* --- Fold cover screens and narrow devices (320-374px). --- */
+@media(max-width:374px){
+  .mnav a{padding:6px 9px;font-size:10px}
+  .eyebrow{letter-spacing:.06em}
+  .hero .cta-row{grid-template-columns:1fr}
+}
+
+/* --- The Kannada sticker is inline-block on <=860px; stale absolute
+       offsets (right:4%) from the desktop rules still shift it off the
+       left edge on wide phones, so reset them there. --- */
+@media(max-width:860px){
+  .hero .kn-sticker{right:auto;top:auto;bottom:auto}
+}

@@ -29,7 +29,7 @@ export default function RegisterPage() {
             <li>Interactive audience discussions, founder Q&amp;A, and lunch sessions</li>
           </ul>
           <p className="fine">
-            Pitch applicants unlock the ₹799 rate when signed in with their application Google account. In-person venue address and schedule details are sent directly to registered pass holders.
+            Pitch applicants unlock the ₹799 rate when signed in with their application Google account. In-person venue address and schedule details* are sent directly to registered pass holders.
           </p>
           <div className="ticket-callout">
             <p>
