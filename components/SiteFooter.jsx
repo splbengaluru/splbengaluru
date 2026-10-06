@@ -44,6 +44,9 @@ export default function SiteFooter() {
             </div>
           </div>
         </div>
+        <p className="ast-note">
+          Items marked <sup className="ast">*</sup> are planned but not final yet. How we handle changes: <a href="/tnc">terms &amp; conditions</a>.
+        </p>
         <div className="bottom">
           <span>© <span id="yr">2026</span> Startup League Bengaluru (SPL) · Pegasus Tech Ventures Regional Partner</span>
           <span><a href="/privacy">Privacy</a> · <a href="/tnc">Terms</a> · 24 October 2026 · Bengaluru, India</span>

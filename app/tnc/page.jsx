@@ -31,6 +31,11 @@ export default function TermsPage() {
               Startup League Bengaluru (SPL) is an in-person startup summit held in Bengaluru on 24 October 2026. SPL serves as a regional partner for the Startup World Cup (SWC), organized by Pegasus Tech Ventures. SPL hosts the Bengaluru regional edition, where 15 selected startups pitch live and the top three teams advance to the Startup World Cup Grand Finale in Silicon Valley.
             </p>
 
+            <h2>Details marked with an asterisk (*)</h2>
+            <p>
+              Across this site, items marked with an asterisk (*) are planned but not yet final. At the time of publishing, these are: the venue, door timings, the session running order, jury appointments, additional mentors, the expected room size, and 2027 season details. We confirm them on this site and in emails to registered pass holders as they are locked in. If a marked detail changes, the updated information on this site and the event emails is the authoritative version and takes precedence over earlier posts, screenshots or social media.
+            </p>
+
             <h2>Pitch applications and stage selection</h2>
             <p>
               Round 1 online screening is open to Indian startups at zero cost. Submitting an application does not guarantee selection for the 15-startup live stage. An independent evaluation committee evaluates applications against published rubric criteria. Decisions of the selection committee and jury chair are final.

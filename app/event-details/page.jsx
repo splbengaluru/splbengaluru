@@ -20,7 +20,7 @@ export default function EventDetails() {
               <span className="hl">Unfiltered stage diligence.</span>
             </h1>
             <p className="lede">
-              A single-day summit engineered for high-signal pitching. 15 pre-screened founders take the stage in front of active venture funds, angel investors, and 200+ ecosystem builders.
+              One day, one stage. 15 shortlisted founders pitch live to venture funds and angels in front of a 200+ strong Bengaluru room.<sup className="ast">*</sup>
             </p>
             <div className="cta-row">
               <a className="btn btn-accent" href="/apply">
@@ -57,14 +57,14 @@ export default function EventDetails() {
           <div className="wrap">
             <h2>The summit structure, broken down.</h2>
             <p className="lede">
-              From morning heats to the winner announcement, the stage is designed for rigor, clarity, and genuine connection.
+              From morning check-in to the winner announcement, here is what happens on stage and around it.
             </p>
             <div className="cards">
               <div className="card">
                 <span className="k">The Evaluation Panel</span>
                 <h3>Institutional &amp; Angel Judges</h3>
                 <p>
-                  An independent panel of active VC partners, prominent angels, and seasoned operators evaluating pitches against our 100-point venture framework.
+                  An independent panel of active VC partners, prominent angels, and seasoned operators evaluating pitches against the 100-point venture framework.<sup className="ast">*</sup>
                 </p>
                 <a href="/interest/judge" className="text-link">
                   Judging track details →
@@ -74,7 +74,7 @@ export default function EventDetails() {
                 <span className="k">Venture Capital</span>
                 <h3>Direct Founder Access</h3>
                 <p>
-                  Curated deal flow across consumer brands, AI, D2C, B2B SaaS, deeptech, hardware, and manufacturing. Active funds connect directly with founding teams during dedicated networking windows.
+                  Deal flow across consumer brands, AI, D2C, B2B SaaS, deeptech, hardware and manufacturing. Active funds meet founding teams in dedicated networking windows.
                 </p>
                 <a href="/interest/vc" className="text-link">
                   Explore VC track →
@@ -84,7 +84,7 @@ export default function EventDetails() {
                 <span className="k">In The Room</span>
                 <h3>Founders, Operators &amp; Builders</h3>
                 <p>
-                  Watch real venture diligence up close, study how winning pitches defend their models, and connect with fellow builders shaping the ecosystem.
+                  Watch venture diligence up close, study how shortlisted founders defend their numbers, and meet builders between blocks.
                 </p>
                 <a href="/register" className="text-link">
                   Get attendee pass →
@@ -93,7 +93,7 @@ export default function EventDetails() {
             </div>
             <div style={{ marginTop: "36px", padding: "20px", background: "var(--paper-2)", borderRadius: "12px", border: "1px solid var(--border)" }}>
               <span className="eyebrow">Venue &amp; Logistics Notice</span>
-              <h3 style={{ margin: "8px 0" }}>In-person Bengaluru venue announcement</h3>
+              <h3 style={{ margin: "8px 0" }}>In-person Bengaluru venue announcement<sup className="ast">*</sup></h3>
               <p style={{ margin: 0, fontSize: "14px", color: "var(--muted)" }}>
                 SPL Season 1 will be held at a central, transit-accessible tech auditorium in Bengaluru. Specific venue location, door timings, and parking instructions will be dispatched to all registered pass holders via email and WhatsApp. For direct venue inquiries, message our desk on <a href="/go/whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp (+91 99459 58602)</a>.
               </p>
