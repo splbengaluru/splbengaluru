@@ -6,6 +6,9 @@ import { publicIdentity } from "@/lib/public-auth";
 import { ticketEligibility } from "@/lib/ticket-eligibility";
 import { rest } from "@/lib/supabase";
 import { sameOrigin } from "@/lib/admin";
+import { after } from "next/server";
+import { captureServerEvent } from "@/lib/posthog-server";
+import { emitPostHogLog, flushPostHogLogs } from "@/lib/posthog-logs";
 
 export const dynamic = "force-dynamic";
 const json = (data, status = 200) => Response.json(data, { status, headers: { "Cache-Control": "no-store" } });
@@ -64,6 +67,17 @@ export async function POST(req, { params }) {
     // Unique email protects existing emails. The UID index migration protects
     // accounts whose Google email changes after their first submission.
     const row = await insertRow(form.table, { ...payload, auth_user_id: identity.id });
+    await captureServerEvent({
+      distinctId: identity.id,
+      event: "form_submitted",
+      properties: { form_type: type },
+    });
+    emitPostHogLog("Form submission persisted", {
+      event: "form_submitted",
+      form_type: type,
+      outcome: "success",
+    });
+    after(flushPostHogLogs);
     return json({ ok: true, ...(type === "audience" ? { registrationNumber: row.registration_number, registrationId: row.id } : {}) });
   } catch (e) {
     if (e.code === "duplicate") return json({ error: "You've already submitted this form with your Google account." }, 409);

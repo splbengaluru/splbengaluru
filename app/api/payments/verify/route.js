@@ -2,6 +2,9 @@ import { sameOrigin } from "@/lib/admin";
 import { publicIdentity } from "@/lib/public-auth";
 import { rest } from "@/lib/supabase";
 import { razorpayAPI, razorpayConfig, validSignature } from "@/lib/razorpay";
+import { after } from "next/server";
+import { captureServerEvent } from "@/lib/posthog-server";
+import { emitPostHogLog, flushPostHogLogs } from "@/lib/posthog-logs";
 
 export async function POST(req) {
   if (!sameOrigin(req)) return Response.json({ error: "Invalid request" }, { status: 403 });
@@ -22,6 +25,19 @@ export async function POST(req) {
       payment.amount !== order.amount_paise || payment.currency !== order.currency)
       return Response.json({ error: "Payment has not been captured yet. Check back shortly." }, { status: 409 });
     const number = await (await rest("rpc/confirm_captured_payment", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ p_order: order.razorpay_order_id, p_payment: payment.id, p_amount: payment.amount, p_mode: cfg.mode }) })).json();
+    await captureServerEvent({
+      distinctId: identity.id,
+      event: "payment_verified",
+      properties: { amount_paise: payment.amount, currency: payment.currency, payment_mode: cfg.mode },
+    });
+    emitPostHogLog("Payment verified", {
+      event: "payment_verified",
+      amount_paise: payment.amount,
+      currency: payment.currency,
+      payment_mode: cfg.mode,
+      outcome: "success",
+    });
+    after(flushPostHogLogs);
     return Response.json({ ok: true, paidTicketNumber: number, mode: cfg.mode }, { headers: { "Cache-Control": "no-store" } });
   } catch { return Response.json({ error: "Payment status could not be verified. Don't pay again; contact the SPL team." }, { status: 503 }); }
 }
